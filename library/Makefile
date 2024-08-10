@@ -1,6 +1,6 @@
 NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror
-OBJECTS_PATH = objects
+OBJECTS_PATH = object
 MK = mkdir -p
 
 SOURCES = \
@@ -57,7 +57,7 @@ SOURCES = \
 	ft_printf_fd.c \
 	ft_trashman.c \
 
-OBJECTS	= $(addprefix $(OBJECTS_PATH)/, $(SOURCES:%.c=%.o))
+OBJECT	= $(addprefix $(OBJECTS_PATH)/, $(SOURCES:%.c=%.o))
 
 all: $(NAME)
 
@@ -65,8 +65,8 @@ $(OBJECTS_PATH)/%.o: %.c
 	$(MK) $(@D)
 	$(CC) $(CFLAGS) -o $@ -c $< $(HEADER)
 
-$(NAME): $(OBJECTS)
-	ar rcs $(NAME) $(OBJECTS)
+$(NAME): $(OBJECT)
+	ar rcs $(NAME) $(OBJECT)
 
 clean:
 	rm -rf $(OBJECTS_PATH)
