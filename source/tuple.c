@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 15:36:11 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/08/10 16:11:56 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,19 @@ t_tuple* create_vector(float x, float y, float z)
 
 int float_equal(float a, float b)
 {
-	if (fabs(a) - fabs(b) < EPSILON)
+	if (fabs(a - b) < EPSILON)
+		return (1);
+	return (0);
+}
+
+int tuple_equal(t_tuple a, t_tuple b)
+{
+	if (
+			float_equal(a.x, b.x)
+			&& float_equal(a.y, b.y)
+			&& float_equal(a.z, b.z)
+			&& a.w == b.w
+		)
 		return (1);
 	return (0);
 }
