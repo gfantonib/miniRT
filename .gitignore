@@ -1,4 +1,4 @@
 *.a
 *.c
 *object
-miniRT
+*miniRT
