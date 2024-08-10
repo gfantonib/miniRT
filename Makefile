@@ -9,7 +9,7 @@ LIBNAME = libft.a
 LIBPATH = library
 
 NAME = miniRT
-SRCFILES = tuples.c
+SRCFILES = tuple.c
 SRCMAIN = main.c
 MAINOBJ = $(OBJPATH)/$(SRCMAIN:.c=.o)
 OBJ = $(SRCFILES:%.c=$(OBJPATH)/%.o)

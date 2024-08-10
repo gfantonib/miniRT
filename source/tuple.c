@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples.c                                           :+:      :+:    :+:   */
+/*   tuple.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 14:33:30 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/08/10 15:36:11 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,11 @@ t_tuple* create_vector(float x, float y, float z)
 	vector->z = z;
 	vector->w = 0;
 	return (vector);
+}
+
+int float_equal(float a, float b)
+{
+	if (fabs(a) - fabs(b) < EPSILON)
+		return (1);
+	return (0);
 }

@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuple.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 13:26:31 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 15:37:28 by gfantoni         ###   ########.fr       */
+/*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
+/*   Updated: 2024/08/10 15:38:29 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TUPLE_H
-#define TUPLE_H
+#include "tuple.h"
+#include <stdio.h>
 
-#include "../library/libft.h"
-#include "stdlib.h"
-#include "math.h"
-
-#define EPSILON 0.00001
-
-typedef struct s_tuple
+int main(void)
 {
-	float	x;
-	float	y;
-	float	z;
-	int		w;
+	float a = 0.0000001;
+	float b = 0.0000002;
 	
-} t_tuple;
+	if (a == b)
+		printf("%f = %f\n", a, b);
+	else
+		printf("%f != %f\n", a, b);
 
-t_tuple*	create_point(float x, float y, float z);
-t_tuple*	create_vector(float x, float y, float z);
-int			float_equal(float a, float b);
-
-#endif
+	if (float_equal(a, b))
+		printf("%f = %f\n", a, b);
+	else
+		printf("%f != %f\n", a, b);
+	return (0);
+}
