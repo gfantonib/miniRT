@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 14:23:25 by gfantoni         ###   ########.fr       */
+/*   Created: 2023/07/27 18:33:44 by gfantoni          #+#    #+#             */
+/*   Updated: 2023/08/10 09:33:58 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
+#include "libft.h"
 
-t_tuple* create_point(float x, float y, float z)
+char	*ft_strdup(const char *s1)
 {
-	t_tuple *point;
+	size_t	i;
+	char	*dest;
 
-	point = (t_tuple *)malloc(sizeof(t_tuple));
-	ft_collect_mem(point);
-	point->x = x;
-	point->y = y;
-	point->z = z;
-	point->w = 1;
-	return (point);
+	i = 0;
+	while (s1[i])
+		i++;
+	dest = (char *)malloc(sizeof(char) * (i + 1));
+	if (!dest)
+		return (NULL);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		dest[i] = s1[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

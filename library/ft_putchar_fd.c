@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples.c                                           :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 14:23:25 by gfantoni         ###   ########.fr       */
+/*   Created: 2023/08/02 09:36:07 by gfantoni          #+#    #+#             */
+/*   Updated: 2024/06/25 21:39:20 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
+#include "libft.h"
 
-t_tuple* create_point(float x, float y, float z)
+int	ft_putchar_fd(char c, int fd)
 {
-	t_tuple *point;
-
-	point = (t_tuple *)malloc(sizeof(t_tuple));
-	ft_collect_mem(point);
-	point->x = x;
-	point->y = y;
-	point->z = z;
-	point->w = 1;
-	return (point);
+	write(fd, &c, 1);
+	return (1);
 }

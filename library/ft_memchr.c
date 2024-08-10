@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples.c                                           :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 14:23:25 by gfantoni         ###   ########.fr       */
+/*   Created: 2023/07/27 09:22:37 by gfantoni          #+#    #+#             */
+/*   Updated: 2023/08/10 09:33:11 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
+#include "libft.h"
 
-t_tuple* create_point(float x, float y, float z)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	t_tuple *point;
+	unsigned char	*alts;
+	size_t			i;
 
-	point = (t_tuple *)malloc(sizeof(t_tuple));
-	ft_collect_mem(point);
-	point->x = x;
-	point->y = y;
-	point->z = z;
-	point->w = 1;
-	return (point);
+	alts = (unsigned char *)s;
+	i = 0;
+	while (n > i)
+	{
+		if (alts[i] == (unsigned char)c)
+			return (&alts[i]);
+		i++;
+	}
+	return (NULL);
 }

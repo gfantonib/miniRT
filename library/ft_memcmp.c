@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples.c                                           :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 14:23:25 by gfantoni         ###   ########.fr       */
+/*   Created: 2023/07/27 10:11:28 by gfantoni          #+#    #+#             */
+/*   Updated: 2023/08/10 09:33:14 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
+#include "libft.h"
 
-t_tuple* create_point(float x, float y, float z)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_tuple *point;
+	unsigned char	*alts1;
+	unsigned char	*alts2;
+	size_t			i;
 
-	point = (t_tuple *)malloc(sizeof(t_tuple));
-	ft_collect_mem(point);
-	point->x = x;
-	point->y = y;
-	point->z = z;
-	point->w = 1;
-	return (point);
+	alts1 = (unsigned char *)s1;
+	alts2 = (unsigned char *)s2;
+	i = 0;
+	while (n > i)
+	{
+		if (alts1[i] != alts2[i])
+			return (alts1[i] - alts2[i]);
+		i++;
+	}
+	return (0);
 }

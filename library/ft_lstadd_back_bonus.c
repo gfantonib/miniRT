@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples.c                                           :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 14:23:25 by gfantoni         ###   ########.fr       */
+/*   Created: 2023/08/10 16:09:17 by gfantoni          #+#    #+#             */
+/*   Updated: 2023/08/10 19:13:56 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
+#include "libft.h"
 
-t_tuple* create_point(float x, float y, float z)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_tuple *point;
+	t_list	*last_node;
 
-	point = (t_tuple *)malloc(sizeof(t_tuple));
-	ft_collect_mem(point);
-	point->x = x;
-	point->y = y;
-	point->z = z;
-	point->w = 1;
-	return (point);
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	last_node = ft_lstlast(*lst);
+	last_node->next = new;
 }

@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples.c                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 14:23:25 by gfantoni         ###   ########.fr       */
+/*   Created: 2023/07/26 12:14:43 by gfantoni          #+#    #+#             */
+/*   Updated: 2023/08/10 09:34:33 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
+#include "libft.h"
 
-t_tuple* create_point(float x, float y, float z)
+char	*ft_strrchr(const char *s, int c)
 {
-	t_tuple *point;
+	char	*alts;
+	size_t	len;
 
-	point = (t_tuple *)malloc(sizeof(t_tuple));
-	ft_collect_mem(point);
-	point->x = x;
-	point->y = y;
-	point->z = z;
-	point->w = 1;
-	return (point);
+	alts = (char *)s;
+	len = ft_strlen(s);
+	if (c == '\0')
+		return (alts + len);
+	while (len != 0)
+	{
+		if (alts[len] == (char)c)
+			return (alts + len);
+		len--;
+	}
+	if (s[0] == (char)c)
+		return (alts);
+	return (0);
 }

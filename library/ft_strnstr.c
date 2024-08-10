@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples.c                                           :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 14:23:25 by gfantoni         ###   ########.fr       */
+/*   Created: 2023/07/27 11:21:10 by gfantoni          #+#    #+#             */
+/*   Updated: 2023/08/10 09:34:29 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
+#include "libft.h"
 
-t_tuple* create_point(float x, float y, float z)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	t_tuple *point;
+	size_t	i;
+	int		j;
 
-	point = (t_tuple *)malloc(sizeof(t_tuple));
-	ft_collect_mem(point);
-	point->x = x;
-	point->y = y;
-	point->z = z;
-	point->w = 1;
-	return (point);
+	i = 0;
+	if (*little == 0)
+		return ((char *) big);
+	while (i < len && big[i] != '\0')
+	{
+		if (big[i] == little[0])
+		{
+			j = 0;
+			while (big[i + j] == little[j] && (i + j < len))
+			{
+				if (little[j + 1] == '\0')
+					return ((char *)&big[i]);
+				j++;
+			}
+		}
+		i++;
+	}
+	return (NULL);
 }

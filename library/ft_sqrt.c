@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples.c                                           :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 14:23:25 by gfantoni         ###   ########.fr       */
+/*   Created: 2024/06/25 21:51:28 by gfantoni          #+#    #+#             */
+/*   Updated: 2024/06/25 22:35:25 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
+#include "libft.h"
 
-t_tuple* create_point(float x, float y, float z)
+long	ft_sqrt(long nb, long kick)
 {
-	t_tuple *point;
+	long	result;
 
-	point = (t_tuple *)malloc(sizeof(t_tuple));
-	ft_collect_mem(point);
-	point->x = x;
-	point->y = y;
-	point->z = z;
-	point->w = 1;
-	return (point);
+	if (nb > 0)
+	{
+		while (1)
+		{
+			result = (kick + (nb / kick)) / 2;
+			if (result == kick)
+			{
+				if (result * result == nb)
+					return (result);
+				else
+					return (0);
+			}
+			kick = result;
+		}
+	}
+	return (0);
 }

@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples.c                                           :+:      :+:    :+:   */
+/*   ft_trashman.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 14:23:25 by gfantoni         ###   ########.fr       */
+/*   Created: 2024/06/25 21:12:41 by gfantoni          #+#    #+#             */
+/*   Updated: 2024/06/25 21:25:34 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
+#include "libft.h"
 
-t_tuple* create_point(float x, float y, float z)
+t_list	**ft_get_mem_address(void)
 {
-	t_tuple *point;
+	static t_list	*ptr;
 
-	point = (t_tuple *)malloc(sizeof(t_tuple));
-	ft_collect_mem(point);
-	point->x = x;
-	point->y = y;
-	point->z = z;
-	point->w = 1;
-	return (point);
+	return (&ptr);
+}
+
+void	ft_collect_mem(void *content)
+{
+	ft_lstadd_back(ft_get_mem_address(), ft_lstnew(content));
+}
+
+void	ft_free_trashman(t_list **lst_memory)
+{
+	t_list	*next;
+
+	while (*lst_memory)
+	{
+		next = (*lst_memory)->next;
+		free((*lst_memory)->content);
+		free(*lst_memory);
+		*lst_memory = next;
+	}
+	*lst_memory = NULL;
 }

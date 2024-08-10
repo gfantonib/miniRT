@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples.c                                           :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 14:23:25 by gfantoni         ###   ########.fr       */
+/*   Created: 2023/07/27 15:12:39 by gfantoni          #+#    #+#             */
+/*   Updated: 2023/08/10 09:32:43 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
+#include "libft.h"
 
-t_tuple* create_point(float x, float y, float z)
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_tuple *point;
+	char	*memory;
+	size_t	i;
 
-	point = (t_tuple *)malloc(sizeof(t_tuple));
-	ft_collect_mem(point);
-	point->x = x;
-	point->y = y;
-	point->z = z;
-	point->w = 1;
-	return (point);
+	if (count == 0 || size == 0)
+		return (malloc(0));
+	if (size != 0 && (count >= 2147483647 / size))
+		return (NULL);
+	memory = malloc(count * size);
+	if (memory == NULL)
+		return (0);
+	i = 0;
+	while (i < count * size)
+	{
+		memory[i] = 0;
+		i++;
+	}
+	return (memory);
 }

@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples.c                                           :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 14:23:25 by gfantoni         ###   ########.fr       */
+/*   Created: 2023/07/27 12:18:28 by gfantoni          #+#    #+#             */
+/*   Updated: 2023/08/12 08:52:07 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
+#include "libft.h"
 
-t_tuple* create_point(float x, float y, float z)
+int	ft_atoi(const char *str)
 {
-	t_tuple *point;
+	int	i;
+	int	is_neg;
+	int	res;
 
-	point = (t_tuple *)malloc(sizeof(t_tuple));
-	ft_collect_mem(point);
-	point->x = x;
-	point->y = y;
-	point->z = z;
-	point->w = 1;
-	return (point);
+	if (*str == '\0')
+		return (0);
+	i = 0;
+	while ((str[i] >= '\t' && str[i] <= '\r') || (str[i] == ' '))
+		i++;
+	is_neg = 1;
+	if (str[i] == '-')
+	{
+		is_neg = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	res = 0;
+	while (str[i] >= '0' && str [i] <= '9')
+		res = (res * 10) + (str[i++] - '0');
+	return (res * is_neg);
 }
