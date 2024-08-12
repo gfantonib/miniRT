@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:26:31 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 15:59:34 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/08/12 09:10:20 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ t_tuple*	create_point(float x, float y, float z);
 t_tuple*	create_vector(float x, float y, float z);
 int			float_equal(float a, float b);
 int			tuple_equal(t_tuple a, t_tuple b);
+t_tuple*	tuple_add(t_tuple a, t_tuple b);
 
 #endif
