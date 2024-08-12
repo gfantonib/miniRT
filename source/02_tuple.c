@@ -24,3 +24,16 @@ t_tuple* tuple_minus(t_tuple a, t_tuple b)
 	tuple->w = a.w - b.w;
 	return (tuple);
 }
+
+t_tuple* tuple_neg(t_tuple a)
+{
+	t_tuple *tuple;
+
+	tuple = (t_tuple *)ft_calloc(sizeof(t_tuple), 1);
+	ft_collect_mem(tuple);
+	tuple->x = a.x * -1;
+	tuple->y = a.y * -1;
+	tuple->z = a.z * -1;
+	tuple->w = a.w * -1;
+	return (tuple);
+}
