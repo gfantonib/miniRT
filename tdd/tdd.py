@@ -40,9 +40,21 @@ _status = vector_vector_minus()
 if _status != 0:
 	status = 1
 
+print("tuple neg")
+from _10_tuple_neg.tuple_neg import tuple_neg
+_status = tuple_neg()
+if _status != 0:
+	status = 1
+
 print("tuple scalar mult div")
 from _11_tuple_scalar_mult_div.tuple_scalar_mult_div import tuple_scalar_mult_div
 _status = tuple_scalar_mult_div()
+if _status != 0:
+	status = 1
+
+print("magnitude")
+from _12_magnitude.magnitude import magnitude
+_status = magnitude()
 if _status != 0:
 	status = 1
 
