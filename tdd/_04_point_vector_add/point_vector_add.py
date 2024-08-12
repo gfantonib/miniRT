@@ -3,9 +3,11 @@
 import os
 import subprocess
 
-def tuple_add_test(exit_status):
+def point_vector_add():
+	exit_status = 0
+	
 	# Ensure the script runs from its own directory
-	# os.chdir(os.path.dirname(os.path.abspath(__file__)))
+	os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 	# Constant args
 	program = ["./miniRT"]
@@ -77,6 +79,6 @@ def tuple_add_test(exit_status):
 	return exit_status
 
 if __name__ == '__main__':
-	exit_status = tuple_add_test(0)
+	exit_status = point_vector_add(0)
 	print(f"exit_status: {exit_status}")
 	exit(exit_status)
