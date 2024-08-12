@@ -40,5 +40,11 @@ _status = vector_vector_minus()
 if _status != 0:
 	status = 1
 
+print("tuple scalar mult div")
+from _11_tuple_scalar_mult_div.tuple_scalar_mult_div import tuple_scalar_mult_div
+_status = tuple_scalar_mult_div()
+if _status != 0:
+	status = 1
+
 print(f"status: {status}\n")
 exit(status)

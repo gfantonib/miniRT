@@ -37,3 +37,27 @@ t_tuple* tuple_neg(t_tuple a)
 	tuple->w = a.w * -1;
 	return (tuple);
 }
+
+t_tuple* tuple_scalar_mult(t_tuple a, float b)
+{
+	t_tuple *tuple;
+
+	tuple = (t_tuple *)ft_calloc(sizeof(t_tuple), 1);
+	ft_collect_mem(tuple);
+	tuple->x = a.x * b;
+	tuple->y = a.y * b;
+	tuple->z = a.z * b;
+	return (tuple);
+}
+
+t_tuple* tuple_scalar_div(t_tuple a, float b)
+{
+	t_tuple *tuple;
+
+	tuple = (t_tuple *)ft_calloc(sizeof(t_tuple), 1);
+	ft_collect_mem(tuple);
+	tuple->x = a.x / b;
+	tuple->y = a.y / b;
+	tuple->z = a.z / b;
+	return (tuple);
+}
