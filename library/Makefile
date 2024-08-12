@@ -1,5 +1,5 @@
 NAME = libft.a
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -lm
 OBJECTS_PATH = object
 MK = mkdir -p
 

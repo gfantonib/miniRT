@@ -61,3 +61,13 @@ t_tuple* tuple_scalar_div(t_tuple a, float b)
 	tuple->z = a.z / b;
 	return (tuple);
 }
+
+float	magnitude(t_tuple vector)
+{
+	if (vector.w != 0)
+	{
+		ft_printf_fd(STDERR_FILENO, "Magnitude error!\n");
+		exit (1);
+	}
+	return(sqrtf(powf(vector.x, 2) + powf(vector.y, 2) + powf(vector.z, 2)));
+}
