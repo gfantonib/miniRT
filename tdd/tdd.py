@@ -70,5 +70,11 @@ _status = dot_prod()
 if _status != 0:
 	status = 1
 
+print("cross dot")
+from _15_cross_prod.cross_prod import cross_prod
+_status = cross_prod()
+if _status != 0:
+	status = 1
+
 print(f"status: {status}\n")
 exit(status)
