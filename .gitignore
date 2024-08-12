@@ -1,3 +1,4 @@
 *.a
 *object
 *miniRT
+*__pycache__/
