@@ -25,11 +25,19 @@ def tuple_add_test(exit_status):
 	# Creating args
 	# battery = ["str on list", "dup on list", "max on list", "nothing on list"]
 	arg_list = [["1", "2", "3", "1", "2", "3"]]
-	stdout_ref_list = ["(2.000000, 4.000000, 6.000000, 2)\n"]
+	stdout_ref_list = ["(2.000000, 4.000000, 6.000000, 1)\n"]
 	stderr_ref_list = [""]
 
 	arg_list.append(["1.5", "2.5", "3.5", "0.5", "0.5", "0.5"])
-	stdout_ref_list.append("(2.000000, 3.000000, 4.000000, 2)\n")
+	stdout_ref_list.append("(2.000000, 3.000000, 4.000000, 1)\n")
+	stderr_ref_list.append("")
+
+	arg_list.append(["1.5", "2.5", "3.5", "-0.5", "-0.5", "-0.5"])
+	stdout_ref_list.append("(1.000000, 2.000000, 3.000000, 1)\n")
+	stderr_ref_list.append("")
+
+	arg_list.append(["-1.5", "-2.5", "-3.5", "0.5", "0.5", "0.5"])
+	stdout_ref_list.append("(-1.000000, -2.000000, -3.000000, 1)\n")
 	stderr_ref_list.append("")
 
 	# Runing and collecting output and error
