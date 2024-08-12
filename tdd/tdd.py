@@ -22,5 +22,11 @@ _status = point_point_add()
 if _status != 0:
 	status = 1
 
+print("point point minus")
+from _07_point_point_minus.point_point_minus import point_point_minus
+_status = point_point_minus()
+if _status != 0:
+	status = 1
+
 print(f"status: {status}\n")
 exit(status)
