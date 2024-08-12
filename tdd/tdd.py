@@ -28,5 +28,11 @@ _status = point_point_minus()
 if _status != 0:
 	status = 1
 
+print("point vector minus")
+from _08_point_vector_minus.point_vector_minus import point_vector_minus
+_status = point_vector_minus()
+if _status != 0:
+	status = 1
+
 print(f"status: {status}\n")
 exit(status)
