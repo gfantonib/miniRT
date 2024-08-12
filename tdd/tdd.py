@@ -64,5 +64,11 @@ _status = normalize()
 if _status != 0:
 	status = 1
 
+print("dot prod")
+from _14_dot_prod.dot_prod import dot_prod
+_status = dot_prod()
+if _status != 0:
+	status = 1
+
 print(f"status: {status}\n")
 exit(status)
