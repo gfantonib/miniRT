@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -lm
 SRCPATH = source
 INCPATH = include
 HEADER = -I$(INCPATH)
