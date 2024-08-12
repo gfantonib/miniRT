@@ -58,5 +58,11 @@ _status = magnitude()
 if _status != 0:
 	status = 1
 
+print("normalize")
+from _13_normalize.normalize import normalize
+_status = normalize()
+if _status != 0:
+	status = 1
+
 print(f"status: {status}\n")
 exit(status)
