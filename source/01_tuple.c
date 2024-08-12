@@ -57,15 +57,13 @@ int tuple_equal(t_tuple a, t_tuple b)
 	return (0);
 }
 
-t_tuple* tuple_add(t_tuple a, t_tuple b)
+t_tuple tuple_add(t_tuple a, t_tuple b)
 {
-	t_tuple *tuple;
+	t_tuple tuple;
 
-	tuple = (t_tuple *)ft_calloc(sizeof(t_tuple), 1);
-	ft_collect_mem(tuple);
-	tuple->x = a.x + b.x;
-	tuple->y = a.y + b.y;
-	tuple->z = a.z + b.z;
-	tuple->w = a.w + b.w;
+	tuple.x = a.x + b.x;
+	tuple.y = a.y + b.y;
+	tuple.z = a.z + b.z;
+	tuple.w = a.w + b.w;
 	return (tuple);
 }

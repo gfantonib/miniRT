@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/12 10:48:33 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:59:31 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int main(int argc, char *argv[])
 	}
 	t_tuple *a = create_point(atof(argv[1]), atof(argv[2]), atof(argv[3]));
 	t_tuple *b = create_point(atof(argv[4]), atof(argv[5]), atof(argv[6]));
-	t_tuple *c = tuple_minus(*a, *b);
-	print_tuple(*c);
+	t_tuple c = tuple_minus(*a, *b);
+	print_tuple(c);
 	ft_free_trashman(ft_get_mem_address());
 	return (0);
 }
