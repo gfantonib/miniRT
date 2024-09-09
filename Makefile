@@ -1,5 +1,6 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -lm
+CFLAGS = -Wall -Wextra -Werror
+MATHFLAG = -lm
 SRCPATH = source
 INCPATH = include
 HEADER = -I$(INCPATH)
@@ -26,7 +27,7 @@ libft:
 	make -C $(LIBPATH)
 
 $(NAME): $(MAINOBJ) $(OBJ)
-	$(CC) $(CFLAGS) $(HEADER) $(OBJ) $(MAINOBJ) $(LIBPATH)/$(LIBNAME) -o $(NAME)
+	$(CC) $(CFLAGS) $(MATHFLAG) $(HEADER) $(OBJ) $(MAINOBJ) $(LIBPATH)/$(LIBNAME) -o $(NAME)
 
 $(MAINOBJ): $(SRCMAIN) | $(OBJPATH)
 	$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
