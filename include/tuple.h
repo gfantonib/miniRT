@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:26:31 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/12 16:38:49 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:50:00 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_tuple
 	float	y;
 	float	z;
 	int		w;
-	
 } t_tuple;
 
 t_tuple*	create_point(float x, float y, float z);
