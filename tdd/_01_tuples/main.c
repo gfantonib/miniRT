@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: leduard2 <leduard2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/10 14:35:30 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/09 17:54:43 by leduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int main(void)
 
 	printf("point (%f, %f, %f, %i)\n", point->x, point->y, point->z, point->w);
 	printf("vector (%f, %f, %f, %i)\n", vector->x, vector->y, vector->z, vector->w);
-	ft_free_trashman(ft_get_mem_address());
+	ft_free_trashman();;
 	return (0);
 }

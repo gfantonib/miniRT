@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: leduard2 <leduard2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/12 15:00:10 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/09 17:54:43 by leduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int main(int argc, char *argv[])
 	print_tuple(c);
 	c = tuple_scalar_div(*a, b);
 	print_tuple(c);
-	ft_free_trashman(ft_get_mem_address());
+	ft_free_trashman();;
 	return (0);
 }

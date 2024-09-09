@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: leduard2 <leduard2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/08/12 13:17:02 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/09 17:54:43 by leduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int main(int argc, char *argv[])
 	t_tuple *a = create_vector(atof(argv[1]), atof(argv[2]), atof(argv[3]));
 	float mag = magnitude(*a);
 	printf("%f\n", roundf(mag));
-	ft_free_trashman(ft_get_mem_address());
+	ft_free_trashman();;
 	return (0);
 }
