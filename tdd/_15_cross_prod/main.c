@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leduard2 <leduard2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/09 17:54:43 by leduard2         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:49:22 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int main(int argc, char *argv[])
 	t_tuple *vec_b = create_vector(atof(argv[4]), atof(argv[5]), atof(argv[6]));
 	t_tuple result_vec = cross_prod(*vec_a, *vec_b);
 	print_tuple(result_vec);
-	ft_free_trashman();;
+	ft_free_trashman();
 	return (0);
 }
