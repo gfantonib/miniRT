@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   03_tuple.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leduard2 <leduard2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 14:27:34 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/09 17:41:43 by leduard2         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:53:23 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_tuple cross_prod(t_tuple vec_a, t_tuple vec_b)
 		exit (1);
 	}
 	t_tuple result_vec;
+	result_vec.w = 0;
 	result_vec.x = vec_a.y * vec_b.z - vec_a.z * vec_b.y;
 	result_vec.y = -1 * (vec_a.x * vec_b.z - vec_a.z * vec_b.x);
 	result_vec.z = vec_a.x * vec_b.y - vec_a.y * vec_b.x;
