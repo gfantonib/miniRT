@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 13:02:21 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/06/25 22:17:03 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:18:51 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int			ft_printf_fd(int fd, const char *format, ...);
 
 // TRASHMAN
 void		ft_collect_mem(void *content);
-void		ft_free_trashman(t_list **lst_memory);
+void		ft_free_trashman(void);
 t_list		**ft_get_mem_address(void);
 
 #endif
