@@ -3,11 +3,13 @@ CFLAGS = -Wall -Wextra -Werror
 MATHFLAG = -lm
 SRCPATH = source
 INCPATH = include
-HEADER = -I$(INCPATH)
+LIBMLX = MLX42
+HEADER = -I $(INCPATH) -I $(LIBMLX)/include
 OBJPATH = object
+MLXNAME = $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
-LIBNAME = libft.a
-LIBPATH = library
+LIBFTNAME = libft.a
+LIBFTPATH = libft
 
 NAME = miniRT
 SRCFILES = 01_tuple.c 02_tuple.c 03_tuple.c
@@ -21,13 +23,16 @@ SRCMAIN_TST =
 MAINOBJ_TST = $(OBJPATH)/$(SRCMAIN_TST:.c=.o)
 OBJ_TST = $(SRCFILES_TST:%.c=$(OBJPATH)/%.o)
 
-all: libft $(NAME)
+all: libft libmlx $(NAME)
 
 libft:
-	make -C $(LIBPATH)
+	make -C $(LIBFTPATH)
+
+libmlx:
+	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 $(NAME): $(MAINOBJ) $(OBJ)
-	$(CC) $(CFLAGS) $(MATHFLAG) $(HEADER) $(OBJ) $(MAINOBJ) $(LIBPATH)/$(LIBNAME) -o $(NAME)
+	$(CC) $(CFLAGS) $(MATHFLAG)  $(HEADER) $(OBJ) $(MAINOBJ) $(MLXNAME) $(LIBFTPATH)/$(LIBFTNAME)  -o $(NAME)
 
 $(MAINOBJ): $(SRCMAIN) | $(OBJPATH)
 	$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
@@ -42,11 +47,12 @@ test: all
 	$(MAKE) NAME=$(NAME_TST) SRCFILES=$(SRCFILES_TST) SRCMAIN=$(SRCMAIN_TST) OBJ=$(OBJ_TST) MAINOBJ=$(MAINOBJ_TST) all
 
 clean:
-	make clean -C $(LIBPATH)
+	make clean -C $(LIBFTPATH)
 	rm -rf $(OBJ) $(OBJ_TST) $(OBJPATH)
+	@rm -rf $(LIBMLX)/build
 
 fclean: clean
-	make fclean -C $(LIBPATH)
+	make fclean -C $(LIBFTPATH)
 	rm -f $(NAME) $(NAME_TST)
 
 re: fclean all
@@ -54,4 +60,4 @@ re: fclean all
 val: all
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft
