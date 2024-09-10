@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   tuple.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: leduard2 <leduard2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:26:31 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/09 18:50:00 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:47:58 by leduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TUPLE_H
-#define TUPLE_H
+# define TUPLE_H
 
-#include "../library/libft.h"
-#include "stdlib.h"
-#include "math.h"
+# include "../libft/libft.h"
+# include "math.h"
+# include "stdlib.h"
 
-#define EPSILON 0.00001
+# define EPSILON 0.00001
 
 typedef struct s_tuple
 {
@@ -25,10 +25,10 @@ typedef struct s_tuple
 	float	y;
 	float	z;
 	int		w;
-} t_tuple;
+}			t_tuple;
 
-t_tuple*	create_point(float x, float y, float z);
-t_tuple*	create_vector(float x, float y, float z);
+t_tuple		*create_point(float x, float y, float z);
+t_tuple		*create_vector(float x, float y, float z);
 int			float_equal(float a, float b);
 int			tuple_equal(t_tuple a, t_tuple b);
 t_tuple		tuple_add(t_tuple a, t_tuple b);
