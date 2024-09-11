@@ -3,14 +3,29 @@ CFLAGS = -Wall -Wextra -Werror
 SRCPATH = ../../source
 MATHFLAG = -lm
 INCPATH = ../../include
-HEADER = -I$(INCPATH)
+HEADER = -I $(INCPATH)
 OBJPATH = object
 
 LIBNAME = libft.a
-LIBPATH = ../../library
+LIBPATH = ../libft
 
 NAME = miniRT
-SRCFILES = 01_tuple.c 02_tuple.c 03_tuple.c
+SRCFILES = _01_tuples \
+_02_epsilon \
+_03_tuple_comparison \
+_04_point_vector_add \
+_05_vector_vector_add \
+_06_point_point_add \
+_07_point_point_minus \
+_08_point_vector_minus \
+_09_vector_vector_minus \
+_10_tuple_neg \
+_11_tuple_scalar_mult_div \
+_12_magnitude \
+_13_normalize \
+_14_dot_prod \
+_15_cross_prod
+
 SRCMAIN = main.c
 MAINOBJ = $(OBJPATH)/$(SRCMAIN:.c=.o)
 OBJ = $(SRCFILES:%.c=$(OBJPATH)/%.o)
