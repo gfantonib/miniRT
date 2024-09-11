@@ -64,6 +64,7 @@ t_tuple tuple_add(t_tuple a, t_tuple b)
 	tuple.x = a.x + b.x;
 	tuple.y = a.y + b.y;
 	tuple.z = a.z + b.z;
-	tuple.w = a.w + b.w;
+	if(a.w != COLOR && b.w != COLOR)
+		tuple.w = a.w + b.w;
 	return (tuple);
 }

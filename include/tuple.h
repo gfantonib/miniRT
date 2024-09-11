@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuple.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leduard2 <leduard2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:26:31 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/10 18:47:58 by leduard2         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:30:56 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ typedef struct s_tuple
 	float	z;
 	int		w;
 }			t_tuple;
+
+enum tuple_type 
+{
+  VECTOR = 0,
+  POINT = 1,
+  COLOR = 2
+};
 
 t_tuple		*create_point(float x, float y, float z);
 t_tuple		*create_vector(float x, float y, float z);
