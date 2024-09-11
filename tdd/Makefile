@@ -12,21 +12,24 @@ LIBFTPATH = ../libft
 
 NAME = miniRT
 SRCFILES = 01_tuple.c 02_tuple.c 03_tuple.c
+
 MAIN = main.c
-MAIN_PATH = epsilon
+TDD_FILES = epsilon tuples
+TDD_FULLPATH = $(addsuffix /$(MAIN), $(TDD_FILES))
+
 
 MAINOBJ = $(OBJPATH)/$(MAIN:.c=.o)
 OBJ = $(SRCFILES:%.c=$(OBJPATH)/%.o)
 
-all: libft $(NAME)
+all: libft $(TDD_FILES:%=%/$(NAME))
 
 libft:
 	make -C $(LIBFTPATH)
 
-$(NAME): $(MAINOBJ) $(OBJ)
-	$(CC) $(CFLAGS) $(MATHFLAG)  $(HEADER) $(OBJ) $(MAINOBJ) $(LIBFTPATH)/$(LIBFTNAME)  -o $(MAIN_PATH)/$(NAME)
+%/$(NAME): %/$(MAIN) $(OBJ)
+	$(CC) $(CFLAGS) $(MATHFLAG) $(HEADER) $(OBJ) $< $(LIBFTPATH)/$(LIBFTNAME) -o $@
 
-$(MAINOBJ): $(MAIN_PATH)/$(MAIN) | $(OBJPATH)
+$(TDD_FULLPATH:.c=.o): %.o : %.c | $(OBJPATH)
 	$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
 
 $(OBJPATH)/%.o: $(SRCPATH)/%.c
