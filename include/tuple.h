@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:26:31 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/12 13:56:24 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:01:20 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_tuple		tuple_neg(t_tuple a);
 t_tuple		tuple_scalar_mult(t_tuple a, float b);
 t_tuple		tuple_scalar_div(t_tuple a, float b);
 float		magnitude(t_tuple vector);
-t_tuple		normalize(t_tuple vector);
+void		normalize(t_tuple *vector);
 float		dot_prod(t_tuple vec_a, t_tuple vec_b);
 t_tuple		cross_prod(t_tuple vec_a, t_tuple vec_b);
 t_tuple		color_color_mult(t_tuple a, t_tuple b);

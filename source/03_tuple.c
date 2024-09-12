@@ -6,24 +6,22 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 14:27:34 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/09 18:53:23 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:00:18 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "tuple.h"
 
-t_tuple normalize(t_tuple vector)
+void normalize(t_tuple *vector)
 {
-	t_tuple norm_vec;
 	float	mag;
 
-	mag = magnitude(vector);
-	norm_vec.x = vector.x / mag;
-	norm_vec.y = vector.y / mag;
-	norm_vec.z = vector.z / mag;
-	norm_vec.w = vector.w / mag;
-	return (norm_vec);
+	mag = magnitude(*vector);
+	vector->x /= mag;
+	vector->y /= mag;
+	vector->z /= mag;
+	vector->w /= mag;
 }
 
 float dot_prod(t_tuple vec_a, t_tuple vec_b)
