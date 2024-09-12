@@ -7,7 +7,7 @@ HEADER = -I$(INCPATH)
 OBJPATH = object
 
 LIBNAME = libft.a
-LIBPATH = ../../library
+LIBPATH = ../../libft
 
 NAME = miniRT
 SRCFILES = 01_tuple.c 02_tuple.c 03_tuple.c
