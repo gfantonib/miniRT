@@ -3,61 +3,69 @@ CFLAGS = -Wall -Wextra -Werror
 MATHFLAG = -lm
 SRCPATH = source
 INCPATH = include
-LIBMLX = MLX42
-HEADER = -I $(INCPATH) -I $(LIBMLX)/include
+HEADER = -I $(INCPATH)
 OBJPATH = object
-MLXNAME = $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 LIBFTNAME = libft.a
 LIBFTPATH = libft
 
-NAME = miniRT
 SRCFILES = 01_tuple.c 02_tuple.c 03_tuple.c
-SRCMAIN = main.c
-MAINOBJ = $(OBJPATH)/$(SRCMAIN:.c=.o)
 OBJ = $(SRCFILES:%.c=$(OBJPATH)/%.o)
 
-NAME_TST = 
-SRCFILES_TST =
-SRCMAIN_TST = 
-MAINOBJ_TST = $(OBJPATH)/$(SRCMAIN_TST:.c=.o)
-OBJ_TST = $(SRCFILES_TST:%.c=$(OBJPATH)/%.o)
+# Paths for the different targets
+EPSILON_PATH = tdd/epsilon
+TUPLES_PATH = tdd/tuples
 
-all: libft libmlx $(NAME)
+EPSILON_MAIN = $(EPSILON_PATH)/main.c
+TUPLES_MAIN = $(TUPLES_PATH)/main.c
 
-libft:
-	make -C $(LIBFTPATH)
+EPSILON_OBJ = $(OBJPATH)/epsilon_main.o
+TUPLES_OBJ = $(OBJPATH)/tuples_main.o
 
-libmlx:
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+# Targets
+all: epsilon tuples
 
-$(NAME): $(MAINOBJ) $(OBJ)
-	$(CC) $(CFLAGS) $(MATHFLAG)  $(HEADER) $(OBJ) $(MAINOBJ) $(MLXNAME) $(LIBFTPATH)/$(LIBFTNAME)  -o $(NAME)
+# Compile for epsilon
+epsilon: libft $(EPSILON_PATH)/miniRT
 
-$(MAINOBJ): $(SRCMAIN) | $(OBJPATH)
+$(EPSILON_PATH)/miniRT: $(OBJ) $(EPSILON_OBJ)
+	$(CC) $(CFLAGS) $(MATHFLAG) $(HEADER) $(OBJ) $(EPSILON_OBJ) $(LIBFTPATH)/$(LIBFTNAME) -o $@
+
+$(EPSILON_OBJ): $(EPSILON_MAIN) | $(OBJPATH)
 	$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
 
-$(OBJPATH)/%.o: $(SRCPATH)/%.c
+# Compile for tuples
+tuples: libft $(TUPLES_PATH)/miniRT
+
+$(TUPLES_PATH)/miniRT: $(OBJ) $(TUPLES_OBJ)
+	$(CC) $(CFLAGS) $(MATHFLAG) $(HEADER) $(OBJ) $(TUPLES_OBJ) $(LIBFTPATH)/$(LIBFTNAME) -o $@
+
+$(TUPLES_OBJ): $(TUPLES_MAIN) | $(OBJPATH)
+	$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
+
+$(OBJPATH)/%.o: $(SRCPATH)/%.c | $(OBJPATH)
 	$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
 
 $(OBJPATH):
 	mkdir -p $(OBJPATH)
 
-test: all
-	$(MAKE) NAME=$(NAME_TST) SRCFILES=$(SRCFILES_TST) SRCMAIN=$(SRCMAIN_TST) OBJ=$(OBJ_TST) MAINOBJ=$(MAINOBJ_TST) all
+libft:
+	make -C $(LIBFTPATH)
 
 clean:
 	make clean -C $(LIBFTPATH)
-	rm -rf $(OBJ) $(OBJ_TST) $(OBJPATH)
-	@rm -rf $(LIBMLX)/build
+	rm -rf $(OBJ) $(EPSILON_OBJ) $(TUPLES_OBJ) $(OBJPATH)
 
 fclean: clean
 	make fclean -C $(LIBFTPATH)
-	rm -f $(NAME) $(NAME_TST)
+	rm -f $(EPSILON_PATH)/miniRT $(TUPLES_PATH)/miniRT
 
 re: fclean all
 
-val: all
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
+val_epsilon: epsilon
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes $(EPSILON_PATH)/miniRT
 
-.PHONY: all clean fclean re libft
+val_tuples: tuples
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes $(TUPLES_PATH)/miniRT
+
+.PHONY: all clean fclean re libft epsilon tuples
