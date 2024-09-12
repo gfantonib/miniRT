@@ -76,5 +76,10 @@ _status = cross_prod()
 if _status != 0:
 	status = 1
 
+print("color operatioon")
+from color_operation.color_operation import color_operation
+_status = color_operation()
+if _status != 0:
+	status = 1
 print(f"status: {status}\n")
 exit(status)
