@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/13 09:49:01 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/13 10:02:29 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void projectile_init(t_proj *proj)
 
 void env_init(t_env *env)
 {
-	env->gravity = create_vector(0, -0.1, 0);
-	env->wind = create_vector(-0.01, 0, 0);
+	env->gravity = create_vector(0, -0.001, 0);
+	env->wind = create_vector(-0.0001, 0, 0);
 }
 
 int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
@@ -73,14 +73,18 @@ void tick(void *arg)
 	while (i++ < 10000)
 	{
 		printf("position:           x: %f, y: %f\n", world->proj->position->x, world->proj->position->y);
+		
+		if (roundf(world->proj->position->x) >= WIDTH || roundf(world->proj->position->x) < 0
+			|| roundf(world->proj->position->y) >= HEIGHT || roundf(world->proj->position->y) < 0)
+			projectile_init(world->proj); 
 		mlx_put_pixel(image, roundf(world->proj->position->x), HEIGHT - roundf(world->proj->position->y), ft_pixel(255, 0, 0, 255));
+		
+		
 		*world->proj->position = tuple_add(*world->proj->position, *world->proj->velocity);
 		printf("position after add: x: %f, y: %f\n", world->proj->position->x, world->proj->position->y);
-		// *world->proj->velocity = tuple_add(tuple_add(*world->proj->velocity, *world->env->gravity), *world->env->wind);
-		// printf("velocity after add: x: %f, y: %f\n\n", world->proj->position->x, world->proj->position->y);
+		*world->proj->velocity = tuple_add(tuple_add(*world->proj->velocity, *world->env->gravity), *world->env->wind);
+		printf("velocity after add: x: %f, y: %f\n\n", world->proj->position->x, world->proj->position->y);
 
-		if (roundf(world->proj->position->x) >= WIDTH || roundf(world->proj->position->y) >= HEIGHT)
-			projectile_init(world->proj); 
 	}
 	// exit(0);
 }
