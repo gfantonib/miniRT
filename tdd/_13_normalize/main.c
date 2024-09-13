@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leduard2 <leduard2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/09 17:54:43 by leduard2         ###   ########.fr       */
+/*   Updated: 2024/09/13 11:25:44 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 	t_tuple *vec = create_vector(atof(argv[1]), atof(argv[2]), atof(argv[3]));
-	t_tuple normalized_vec = normalize(*vec);
-	float mag = magnitude(normalized_vec);
+	normalize(vec);
+	float mag = magnitude(*vec);
 	printf("%f\n", mag);
-	ft_free_trashman();;
+	ft_free_trashman();
 	return (0);
 }
