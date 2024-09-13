@@ -6,13 +6,15 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/12 17:31:15 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/13 09:49:01 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42/MLX42.h"
 #include "tuple.h"
 #include <stdio.h>
+#define WIDTH 900
+#define HEIGHT 550
 
 mlx_image_t *image;
 
@@ -44,15 +46,16 @@ typedef struct s_world
 
 void projectile_init(t_proj *proj)
 {
-	proj->position = create_point(500, 500, 0);
-	proj->velocity = create_vector(1, 1, 0);
+	proj->position = create_point(0, 0, 0);
+	proj->velocity = create_vector(0.01, 0.01, 0);
 	normalize(proj->velocity);
+	// *proj->velocity = tuple_scalar_mult(*proj->velocity, 11.25);
 }
 
 void env_init(t_env *env)
 {
-	env->gravity = create_vector(0, 0, 0);
-	env->wind = create_vector(0, 0, 0);
+	env->gravity = create_vector(0, -0.1, 0);
+	env->wind = create_vector(-0.01, 0, 0);
 }
 
 int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
@@ -65,28 +68,21 @@ void tick(void *arg)
 	t_world *world = (t_world *)arg;
 
 	int i;
-	float x;
-	float y;
-	t_tuple *position;
-	t_tuple *velocity;
-	t_tuple *gravity;
-	t_tuple *wind;
-
-	position = world->proj->position;
-	velocity = world->proj->velocity;
-	gravity = world->env->gravity;
-	wind = world->env->wind;
 
 	i = 0;
-	while (i++ < 18)
+	while (i++ < 10000)
 	{
-		x = position->x;
-		y = position->y;
-		printf("x: %f, y: %f", x, y);
-		mlx_put_pixel(image, x, y, ft_pixel(255, 0, 0, 255));
-		*position = tuple_add(*position, *velocity);
-		*velocity = tuple_add(tuple_add(*velocity, *gravity), *wind);
+		printf("position:           x: %f, y: %f\n", world->proj->position->x, world->proj->position->y);
+		mlx_put_pixel(image, roundf(world->proj->position->x), HEIGHT - roundf(world->proj->position->y), ft_pixel(255, 0, 0, 255));
+		*world->proj->position = tuple_add(*world->proj->position, *world->proj->velocity);
+		printf("position after add: x: %f, y: %f\n", world->proj->position->x, world->proj->position->y);
+		// *world->proj->velocity = tuple_add(tuple_add(*world->proj->velocity, *world->env->gravity), *world->env->wind);
+		// printf("velocity after add: x: %f, y: %f\n\n", world->proj->position->x, world->proj->position->y);
+
+		if (roundf(world->proj->position->x) >= WIDTH || roundf(world->proj->position->y) >= HEIGHT)
+			projectile_init(world->proj); 
 	}
+	// exit(0);
 }
 
 int main(void)
@@ -96,8 +92,8 @@ int main(void)
 	t_env env;
 	t_world world;
 
-	mlx = mlx_init(1000, 1000, "miniRT", true);
-	image = mlx_new_image(mlx, 1000, 1000);
+	mlx = mlx_init(WIDTH, HEIGHT, "miniRT", true);
+	image = mlx_new_image(mlx, WIDTH, HEIGHT);
 	mlx_image_to_window(mlx, image, 0, 0);
 
 	projectile_init(&proj);
@@ -107,6 +103,8 @@ int main(void)
 	env_init(&env);
 	print_tuple(*env.gravity);
 	print_tuple(*env.wind);
+	
+	printf("\n");
 
 	world.env = &env;
 	world.proj = &proj;
