@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 16:30:58 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/17 12:15:28 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/17 13:50:51 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ t_matrix *matrix_matrix_mult(t_matrix ma, t_matrix mb)
 {
 	int ma_rows;
 	int ma_columns;
+	int mb_rows;
+	int mb_columns;
+	int mc_rows;
+	int mc_columns;
 	int result;
 	
 	if (ma.columns != mb.rows)
@@ -69,21 +73,34 @@ t_matrix *matrix_matrix_mult(t_matrix ma, t_matrix mb)
 		exit(1);
 	}
 	t_matrix *mc;
-	mc = (t_matrix *)calloc(sizeof(t_matrix), 1);
-	mc->matrix = create_matrix(ma.rows, mb.columns);
+	mc = (t_matrix *)calloc(1, sizeof(t_matrix));
+	mc = create_matrix(ma.rows, mb.columns);
 	mc->rows = ma.rows;
 	mc->columns = mb.columns;
+	
 	ma_rows = 0;
-	ma_columns = 0;
+	mc_rows = 0;
+	mc_columns = 0;
 	while (ma_rows < ma.rows)
 	{
-		ma_columns = 0;
-		while (ma_columns < ma.columns)
+		mc_columns = 0;
+		mb_columns = 0;
+		while (mb_columns < mb.columns)
 		{
-			result += ma.matrix[ma_rows][ma_columns] * mb.matrix[ma_columns][ma_rows];
-			ma_columns++;
+			ma_columns = 0;
+			mb_rows = 0;
+			while (ma_columns < ma.columns)
+			{
+				result += ma.matrix[ma_rows][ma_columns] * mb.matrix[mb_rows][mb_columns];
+				ma_columns++;
+				mb_rows++;
+			}
+			mc->matrix[mc_rows][mc_columns] = result;
+			mc_columns++;
+			mb_columns++;
 		}
-		mc->matrix[ma_rows][] = result;
+		mc_rows++;
 		ma_rows++;
 	}
+	return (mc);
 }
