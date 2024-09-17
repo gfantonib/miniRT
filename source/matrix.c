@@ -6,11 +6,12 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 16:30:58 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/17 09:51:14 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/17 10:21:44 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
+#include "tuple.h"
 
 t_matrix *create_matrix(unsigned int rows, unsigned int columns)
 {
@@ -33,7 +34,25 @@ t_matrix *create_matrix(unsigned int rows, unsigned int columns)
 	return (matrix);
 }
 
-// int matrix_equal(float **ma, float **mb)
-// {
-	
-// }
+int matrix_equal(t_matrix ma, t_matrix mb)
+{
+	int rows;
+	int columns;
+
+	if (ma.rows != mb.rows || ma.columns != mb.columns)
+		return (0);
+	rows = 0;
+	columns = 0;
+	while (rows < ma.rows)
+	{
+		columns = 0;
+		while (columns < ma.columns)
+		{
+			if (!float_equal(ma.matrix[rows][columns], mb.matrix[rows][columns]))
+				return (0);
+			columns++;
+		}
+		rows++;
+	}
+	return (1);
+}

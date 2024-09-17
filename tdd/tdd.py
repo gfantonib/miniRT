@@ -88,5 +88,11 @@ _status = matrix_operation()
 if _status != 0:
 	status = 1
 
+print("matrix equal")
+from matrix_equal.matrix_equal import matrix_equal
+_status = matrix_equal()
+if _status != 0:
+	status = 1
+
 print(f"status: {status}\n")
 exit(status)
