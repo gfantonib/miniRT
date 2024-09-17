@@ -94,5 +94,11 @@ _status = matrix_equal()
 if _status != 0:
 	status = 1
 
+print("matrix mult")
+from matrix_mult.matrix_mult import matrix_mult
+_status = matrix_mult()
+if _status != 0:
+	status = 1
+
 print(f"status: {status}\n")
 exit(status)

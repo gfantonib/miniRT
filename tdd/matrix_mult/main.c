@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/17 13:43:34 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:44:49 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void print_matrix(t_matrix matrix)
 		i++;
 	}	
 }
+
 int main(int argc, char *argv[])
 {
 	if (argc != 5)

@@ -28,19 +28,19 @@ def matrix_mult():
 	# Creating args
 	# battery = ["str on list", "dup on list", "max on list", "nothing on list"]
 	arg_list = [["3", "3", "3", "3"]]
-	stdout_ref_list = ["OK\n"]
+	stdout_ref_list = ["0.000000 0.000000 0.000000 \n1.000000 1.000000 1.000000 \n2.000000 2.000000 2.000000 \n"]
 	stderr_ref_list = [""]
 
 	arg_list.append(["1", "3", "1", "3"])
-	stdout_ref_list.append("OK\n")
-	stderr_ref_list.append("")
+	stdout_ref_list.append("")
+	stderr_ref_list.append("matrix_matrix_mult() error!\n")
 	
 	arg_list.append(["3", "1", "3", "1"])
-	stdout_ref_list.append("OK\n")
-	stderr_ref_list.append("")
+	stdout_ref_list.append("")
+	stderr_ref_list.append("matrix_matrix_mult() error!\n")
 
 	arg_list.append(["3", "1", "1", "3"])
-	stdout_ref_list.append("KO\n")
+	stdout_ref_list.append("0.000000 0.000000 0.000000 \n1.000000 1.000000 1.000000 \n2.000000 2.000000 2.000000 \n")
 	stderr_ref_list.append("")
 
 	# Runing and collecting output and error
