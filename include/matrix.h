@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:31:59 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/13 17:32:15 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/17 09:51:23 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 
 # define EPSILON 0.00001
 
-float **create_matrix(unsigned int row, unsigned int column);
+typedef struct s_matrix
+{
+	float **matrix;
+	int		rows;
+	int		columns;
+}	t_matrix;
+
+t_matrix *create_matrix(unsigned int rows, unsigned int columns);
 
 #endif
