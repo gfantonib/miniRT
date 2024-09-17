@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/17 09:19:37 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/17 09:53:28 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 #include "matrix.h"
 #include <stdio.h>
 
-void print_matrix(float **matrix, int row, int column)
+void print_matrix(t_matrix matrix)
 {
 	int i;
 	int j;
 
 	i = 0;
 	j = 0;
-	while(i< row)
+	while(i < matrix.rows)
 	{
 		j = 0;
-		while(j < column)
+		while(j < matrix.columns)
 		{
-			matrix[i][j] = (float)i;
-			printf("%f ", matrix[i][j] );
+			matrix.matrix[i][j] = (float)i;
+			printf("%f ", matrix.matrix[i][j] );
 			j++;
 		}
 		printf("\n");
@@ -41,9 +41,9 @@ int main(int argc, char *argv[])
 		printf("TEST ERROR!\n");
 		return (1);
 	}
-	float **matrix;
+	t_matrix *matrix;
 	matrix = create_matrix(atoi(argv[1]), atoi(argv[2]));
-	print_matrix(matrix, atoi(argv[1]), atoi(argv[2]));
+	print_matrix(*matrix);
 	ft_free_trashman();
 	return (0);
 }
