@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "tuple.h"
+#include "error_exit.h"
 
 t_tuple tuple_minus(t_tuple a, t_tuple b)
 {
@@ -60,9 +61,6 @@ t_tuple tuple_scalar_div(t_tuple a, float b)
 float	magnitude(t_tuple vector)
 {
 	if (vector.w != 0)
-	{
-		ft_printf_fd(STDERR_FILENO, "magnitude() error!\n");
-		exit (1);
-	}
+		error_exit("magnitude() error!\n");
 	return(sqrtf(powf(vector.x, 2) + powf(vector.y, 2) + powf(vector.z, 2)));
 }

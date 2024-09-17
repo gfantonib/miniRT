@@ -6,11 +6,12 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:31:52 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/12 14:17:18 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:57:59 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tuple.h"
+#include "error_exit.h"
 
 t_tuple* create_color(float red, float green, float blue)
 {
@@ -35,9 +36,6 @@ t_tuple color_color_mult(t_tuple a, t_tuple b)
 	if (a.w == COLOR && b.w == COLOR)
 		color.w = COLOR;
 	else
-	{
-		ft_printf_fd(STDERR_FILENO, "color_color_mult() error!\n");
-		exit (1);
-	}
+		error_exit("color_color_mult() error!\n");
 	return (color);
 }

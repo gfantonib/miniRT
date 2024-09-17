@@ -6,12 +6,13 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 16:30:58 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/17 13:50:51 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:57:15 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 #include "tuple.h"
+#include "error_exit.h"
 
 t_matrix *create_matrix(unsigned int rows, unsigned int columns)
 {
@@ -66,14 +67,10 @@ t_matrix *matrix_matrix_mult(t_matrix ma, t_matrix mb)
 	int mc_rows;
 	int mc_columns;
 	int result;
+	t_matrix *mc;
 	
 	if (ma.columns != mb.rows)
-	{
-		ft_printf_fd(STDERR_FILENO, "matrix_matrix_mult() error!\n");
-		exit(1);
-	}
-	t_matrix *mc;
-	mc = (t_matrix *)calloc(1, sizeof(t_matrix));
+		error_exit("matrix_matrix_mult() error!\n");
 	mc = create_matrix(ma.rows, mb.columns);
 	mc->rows = ma.rows;
 	mc->columns = mb.columns;
@@ -89,6 +86,7 @@ t_matrix *matrix_matrix_mult(t_matrix ma, t_matrix mb)
 		{
 			ma_columns = 0;
 			mb_rows = 0;
+			result = 0;
 			while (ma_columns < ma.columns)
 			{
 				result += ma.matrix[ma_rows][ma_columns] * mb.matrix[mb_rows][mb_columns];
