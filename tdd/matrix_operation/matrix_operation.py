@@ -4,7 +4,7 @@ import os
 import subprocess
 from numpy import sqrt
 
-def color_operation():
+def matrix_operation():
 	exit_status = 0
 	
 	# Ensure the script runs from its own directory
@@ -27,13 +27,17 @@ def color_operation():
 
 	# Creating args
 	# battery = ["str on list", "dup on list", "max on list", "nothing on list"]
-	arg_list = [["1.0", "0.2", "0.4", "0.9", "1.0", "0.1"]]
-	stdout_ref_list = ["(0.900000, 0.200000, 0.040000, 2)\n(1.900000, 1.200000, 0.500000, 2)\n(0.100000, -0.800000, 0.300000, 2)\n"]
+	arg_list = [["3", "3"]]
+	stdout_ref_list = ["0.000000 0.000000 0.000000 \n1.000000 1.000000 1.000000 \n2.000000 2.000000 2.000000 \n"]
 	stderr_ref_list = [""]
 
-	# arg_list.append(["1.0", "0.2", "0.4", "0.9", "1.0", "0.1"])
-	# stdout_ref_list.append("(1.900000, 1.200000, 0.500000, 2)\n")
-	# stderr_ref_list.append("")
+	arg_list.append(["1", "3"])
+	stdout_ref_list.append("0.000000 0.000000 0.000000 \n")
+	stderr_ref_list.append("")
+	
+	arg_list.append(["3", "1"])
+	stdout_ref_list.append("0.000000 \n1.000000 \n2.000000 \n")
+	stderr_ref_list.append("")
 
 	# Runing and collecting output and error
 	stdout_list = []
@@ -71,6 +75,6 @@ def color_operation():
 	return exit_status
 
 if __name__ == '__main__':
-	exit_status = color_operation()
+	exit_status = matrix_operation()
 	print(f"exit_status: {exit_status}")
 	exit(exit_status)

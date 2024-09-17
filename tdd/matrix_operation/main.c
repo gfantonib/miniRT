@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/13 17:32:02 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/17 09:19:37 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,16 @@ void print_matrix(float **matrix, int row, int column)
 		i++;
 	}	
 }
-// int argc, char *argv[]
-int main()
-{	
+int main(int argc, char *argv[])
+{
+	if (argc != 3)
+	{
+		printf("TEST ERROR!\n");
+		return (1);
+	}
 	float **matrix;
-
-	matrix = create_matrix(3, 4);
-	print_matrix(matrix, 3, 4);
-	
+	matrix = create_matrix(atoi(argv[1]), atoi(argv[2]));
+	print_matrix(matrix, atoi(argv[1]), atoi(argv[2]));
+	ft_free_trashman();
 	return (0);
 }
