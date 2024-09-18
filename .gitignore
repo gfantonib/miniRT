@@ -4,4 +4,4 @@
 *__pycache__/
 */*/__pycache__/
 .vscode
-tdd/matrix_mult/vgcore.*
+tdd/*/vgcore.*
