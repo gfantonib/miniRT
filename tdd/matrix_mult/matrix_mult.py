@@ -27,20 +27,20 @@ def matrix_mult():
 
 	# Creating args
 	# battery = ["str on list", "dup on list", "max on list", "nothing on list"]
-	arg_list = [["3", "3", "3", "3"]]
-	stdout_ref_list = ["0.000000 0.000000 0.000000 \n1.000000 1.000000 1.000000 \n2.000000 2.000000 2.000000 \n"]
+	arg_list = [["3", "3", "3", "3", "1 2 3 4 5 6 7 8 9", "9 8 7 6 5 4 3 2 1"]]
+	stdout_ref_list = ["30.000000 24.000000 18.000000 \n84.000000 69.000000 54.000000 \n138.000000 114.000000 90.000000 \n"]
 	stderr_ref_list = [""]
 
-	arg_list.append(["1", "3", "1", "3"])
+	arg_list.append(["1", "3", "1", "3", "2 4 6", "3 5 7"])
 	stdout_ref_list.append("")
 	stderr_ref_list.append("matrix_matrix_mult() error!\n")
 	
-	arg_list.append(["3", "1", "3", "1"])
+	arg_list.append(["3", "1", "3", "1", "1 2 3", "4 5 6"])
 	stdout_ref_list.append("")
 	stderr_ref_list.append("matrix_matrix_mult() error!\n")
 
-	arg_list.append(["3", "1", "1", "3"])
-	stdout_ref_list.append("0.000000 0.000000 0.000000 \n1.000000 1.000000 1.000000 \n2.000000 2.000000 2.000000 \n")
+	arg_list.append(["3", "1", "1", "3", "1 2 3", "4 5 6"])
+	stdout_ref_list.append("4.000000 5.000000 6.000000 \n8.000000 10.000000 12.000000 \n12.000000 15.000000 18.000000 \n")
 	stderr_ref_list.append("")
 
 	# Runing and collecting output and error
