@@ -106,5 +106,11 @@ _status = matrix_identity()
 if _status != 0:
 	status = 1
 
+print("matrix transpose")
+from matrix_transpose.matrix_transpose import matrix_transpose
+_status = matrix_transpose()
+if _status != 0:
+	status = 1
+
 print(f"status: {status}\n")
 exit(status)
