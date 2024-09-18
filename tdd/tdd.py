@@ -100,5 +100,11 @@ _status = matrix_mult()
 if _status != 0:
 	status = 1
 
+print("matrix identity")
+from matrix_identity.matrix_identity import matrix_identity
+_status = matrix_identity()
+if _status != 0:
+	status = 1
+
 print(f"status: {status}\n")
 exit(status)
