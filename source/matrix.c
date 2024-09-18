@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 16:30:58 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/17 15:57:15 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/18 10:25:36 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,47 +58,68 @@ int matrix_equal(t_matrix ma, t_matrix mb)
 	return (1);
 }
 
+// t_matrix *matrix_matrix_mult(t_matrix ma, t_matrix mb)
+// {
+// 	int ma_rows;
+// 	int ma_columns;
+// 	int mb_rows;
+// 	int mb_columns;
+// 	int mc_rows;
+// 	int mc_columns;
+// 	int result;
+// 	t_matrix *mc;
+	
+// 	if (ma.columns != mb.rows)
+// 		error_exit("matrix_matrix_mult() error!\n");
+// 	mc = create_matrix(ma.rows, mb.columns);
+// 	ma_rows = 0;
+// 	mc_rows = 0;
+// 	mc_columns = 0;
+// 	while (ma_rows < ma.rows)
+// 	{
+// 		mc_columns = 0;
+// 		mb_columns = 0;
+// 		while (mb_columns < mb.columns)
+// 		{
+// 			ma_columns = 0;
+// 			mb_rows = 0;
+// 			result = 0;
+// 			while (ma_columns < ma.columns)
+// 				result += ma.matrix[ma_rows][ma_columns++] * mb.matrix[mb_rows++][mb_columns];
+// 			mc->matrix[mc_rows][mc_columns++] = result;;
+// 			mb_columns++;
+// 		}
+// 		mc_rows++;
+// 		ma_rows++;
+// 	}
+// 	return (mc);
+// }
+
 t_matrix *matrix_matrix_mult(t_matrix ma, t_matrix mb)
 {
-	int ma_rows;
-	int ma_columns;
-	int mb_rows;
-	int mb_columns;
-	int mc_rows;
-	int mc_columns;
+	int count[3];
 	int result;
 	t_matrix *mc;
-	
+
 	if (ma.columns != mb.rows)
 		error_exit("matrix_matrix_mult() error!\n");
 	mc = create_matrix(ma.rows, mb.columns);
-	mc->rows = ma.rows;
-	mc->columns = mb.columns;
-	
-	ma_rows = 0;
-	mc_rows = 0;
-	mc_columns = 0;
-	while (ma_rows < ma.rows)
+	count[0] = 0;
+	while (count[0] < ma.rows)
 	{
-		mc_columns = 0;
-		mb_columns = 0;
-		while (mb_columns < mb.columns)
+		count[1] = 0;
+		while (count[1] < mb.columns)
 		{
-			ma_columns = 0;
-			mb_rows = 0;
+			count[2] = 0;
 			result = 0;
-			while (ma_columns < ma.columns)
+			while (count[2] < ma.columns)
 			{
-				result += ma.matrix[ma_rows][ma_columns] * mb.matrix[mb_rows][mb_columns];
-				ma_columns++;
-				mb_rows++;
+				result += ma.matrix[count[0]][count[2]] * mb.matrix[count[2]][count[1]];
+				count[2]++;
 			}
-			mc->matrix[mc_rows][mc_columns] = result;
-			mc_columns++;
-			mb_columns++;
+			mc->matrix[count[0]][count[1]++] = result;
 		}
-		mc_rows++;
-		ma_rows++;
+		count[0]++;
 	}
 	return (mc);
 }
