@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 16:30:58 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/18 10:25:36 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/18 10:53:03 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,4 +122,25 @@ t_matrix *matrix_matrix_mult(t_matrix ma, t_matrix mb)
 		count[0]++;
 	}
 	return (mc);
+}
+
+t_matrix *matrix_transpose(t_matrix matrix)
+{
+	int i;
+	int j;
+	
+	t_matrix *result;
+	result = create_matrix(matrix.columns, matrix.rows);
+	i = 0;
+	while (i < result->rows)
+	{
+		j = 0;
+		while (j < result->columns)
+		{
+			result->matrix[i][j] = matrix.matrix[j][i];
+			j++;
+		}
+		i++;
+	}
+	return (result);
 }
