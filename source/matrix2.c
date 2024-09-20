@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 08:17:57 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/20 18:07:34 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/20 19:14:35 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ t_matrix *inverse(t_matrix matrix)
 	unsigned int	j;
 	
 	if (matrix.rows != matrix.columns)
-		error_exit("inverse() error: matrix must be squared.\n");
+		error_exit("inverse() error: matrix must be squared\n");
 	det = determinant(matrix);
 	if (det == 0)
-		error_exit("inverse() error: cannot inverse matrix with determinant = 0.\n");
+		error_exit("inverse() error: cannot inverse matrix with determinant = 0\n");
 	inv = create_matrix(matrix.rows, matrix.columns);
 	i = 0;
 	while (i < inv->rows)
