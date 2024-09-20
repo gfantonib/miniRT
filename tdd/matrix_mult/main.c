@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/18 08:24:15 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/20 10:13:32 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 void print_matrix(t_matrix matrix)
 {
-	int i;
-	int j;
+	unsigned int i;
+	unsigned int j;
 
 	i = 0;
 	j = 0;
@@ -36,9 +36,9 @@ void print_matrix(t_matrix matrix)
 
 void fill_matrix(t_matrix *matrix, char **values)
 {
-	int i;
-	int j;
-	int k;
+	unsigned int i;
+	unsigned int j;
+	unsigned int k;
 
 	i = 0;
 	j = 0;
