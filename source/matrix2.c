@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 08:17:57 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/20 19:14:35 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/20 19:35:07 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,11 @@
 #include "tuple.h"
 #include "error_exit.h"
 
-// #include <stdio.h>
-// void print_matrix(t_matrix matrix)
-// {
-// 	unsigned int i;
-// 	unsigned int j;
-
-// 	i = 0;
-// 	j = 0;
-// 	while(i < matrix.rows)
-// 	{
-// 		j = 0;
-// 		while(j < matrix.columns)
-// 		{
-// 			printf("%f ", matrix.matrix[i][j]);
-// 			j++;
-// 		}
-// 		printf("\n");
-// 		i++;
-// 	}
-// }
+static void build_cofactor_matrix(t_matrix *inv, t_matrix matrix);
+static void divide_by_det(t_matrix *inv, float det);
 
 float determinant(t_matrix matrix)
-{	
+{
 	t_matrix		*sub_matrix;
 	unsigned int	j;
 	float			det;
@@ -63,8 +45,6 @@ t_matrix *inverse(t_matrix matrix)
 {
 	t_matrix		*inv;
 	float			det;
-	unsigned int	i;
-	unsigned int	j;
 	
 	if (matrix.rows != matrix.columns)
 		error_exit("inverse() error: matrix must be squared\n");
@@ -72,6 +52,17 @@ t_matrix *inverse(t_matrix matrix)
 	if (det == 0)
 		error_exit("inverse() error: cannot inverse matrix with determinant = 0\n");
 	inv = create_matrix(matrix.rows, matrix.columns);
+	build_cofactor_matrix(inv, matrix);
+	inv = matrix_transpose(*inv);
+	divide_by_det(inv, det);
+	return (inv);
+}
+
+static void build_cofactor_matrix(t_matrix *inv, t_matrix matrix)
+{
+	unsigned int i;
+	unsigned int j;
+	
 	i = 0;
 	while (i < inv->rows)
 	{
@@ -86,10 +77,13 @@ t_matrix *inverse(t_matrix matrix)
 		}
 		i++;
 	}
-	// print_matrix(*inv);
-	inv = matrix_transpose(*inv);
-	// printf("\n");
-	// print_matrix(*inv);
+}
+
+static void divide_by_det(t_matrix *inv, float det)
+{
+	unsigned int i;
+	unsigned int j;
+	
 	i = 0;
 	while (i < inv->rows)
 	{
@@ -101,8 +95,4 @@ t_matrix *inverse(t_matrix matrix)
 		}
 		i++;
 	}
-	// printf("\n");
-	// print_matrix(*inv);
-	return (inv);
 }
-
