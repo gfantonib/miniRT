@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 16:30:58 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/20 12:40:31 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/20 18:48:55 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int matrix_equal(t_matrix ma, t_matrix mb)
 t_matrix *matrix_matrix_mult(t_matrix ma, t_matrix mb)
 {
 	unsigned int count[3];
-	int result;
+	float result;
 	t_matrix *mc;
 
 	if (ma.columns != mb.rows)
