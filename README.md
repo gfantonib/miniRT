@@ -3,4 +3,5 @@ The goal of this program is to generate images using the Raytracing protocol. Th
 
 ### Reference
 [BetterExplained.com](BetterExplained.com)\
-[An Intuitive Guide to Linear Algebra](https://betterexplained.com/articles/linear-algebra-guide/)
+[An Intuitive Guide to Linear Algebra](https://betterexplained.com/articles/linear-algebra-guide/)\
+[Essence of Linear Algebra - 3Blue1Brown](https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
