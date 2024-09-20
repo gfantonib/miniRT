@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/20 18:22:00 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/20 19:11:06 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void print_matrix(t_matrix matrix)
 		j = 0;
 		while(j < matrix.columns)
 		{
+			if (matrix.matrix[i][j] < 0)
+				matrix.matrix[i][j] = -(matrix.matrix[i][j]);
 			printf("%f ", matrix.matrix[i][j]);
 			j++;
 		}
@@ -73,11 +75,7 @@ int main(int argc, char *argv[])
 	ma_values = ft_split(argv[3], ' ');
 	fill_matrix(ma, ma_values);
 	ft_collect_mem(ma_values);
-	print_matrix(*ma);
-	printf("\n");
 	mb = inverse(*ma);
-	print_matrix(*mb);
-	printf("\n");
 	mc = matrix_matrix_mult(*mb, *ma);
 	print_matrix(*mc);
 	ft_free_trashman();

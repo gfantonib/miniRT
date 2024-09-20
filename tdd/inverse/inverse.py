@@ -27,29 +27,21 @@ def inverse():
 
 	# Creating args
 	# battery = ["str on list", "dup on list", "max on list", "nothing on list"]
-	arg_list = [["1", "1", "3"]]
-	stdout_ref_list = ["3.000000\n"]
+	arg_list = [["3", "3", "11 15 0 -1 2 21 7 8 9"]]
+	stdout_ref_list = ["1.000000 0.000000 0.000000 \n0.000000 1.000000 0.000000 \n0.000000 0.000000 1.000000 \n"]
 	stderr_ref_list = [""]
 
-	arg_list.append(["2", "2", "1 3 7 9"])
-	stdout_ref_list.append("-12.000000\n")
-	stderr_ref_list.append("")
-
-	arg_list.append(["3", "3", "1 2 3 4 5 6 7 8 9"])
-	stdout_ref_list.append("0.000000\n")
-	stderr_ref_list.append("")
-
-	arg_list.append(["4", "4", "2 3 1 5 4 6 3 8 7 9 5 2 1 4 6 9"])
-	stdout_ref_list.append("-10.000000\n")
-	stderr_ref_list.append("")
-
-	arg_list.append(["5", "5", "1 3 2 4 5 5 1 3 2 4 4 5 1 3 2 2 4 5 1 3 3 2 4 5 1"])
-	stdout_ref_list.append("2325.000000\n")
+	arg_list.append(["4", "4", "-5 2 6 -8 1 -5 1 8 7 7 -6 -7 1 -3 7 4"])
+	stdout_ref_list.append("1.000000 0.000000 0.000000 0.000000 \n0.000000 1.000000 0.000000 0.000000 \n0.000000 0.000000 1.000000 0.000000 \n0.000000 0.000000 0.000000 1.000000 \n")
 	stderr_ref_list.append("")
 
 	arg_list.append(["2", "3", "1 2 3 4 5 6"])
 	stdout_ref_list.append("")
-	stderr_ref_list.append("inverse() error!\n")
+	stderr_ref_list.append("inverse() error: matrix must be squared\n")
+
+	arg_list.append(["3", "3", "1 2 3 4 5 6 7 8 9"])
+	stdout_ref_list.append("")
+	stderr_ref_list.append("inverse() error: cannot inverse matrix with determinant = 0\n")
 
 	# Runing and collecting output and error
 	stdout_list = []
