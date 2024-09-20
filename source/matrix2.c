@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 08:17:57 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/20 10:49:31 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/20 12:22:59 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,40 @@ t_matrix *submatrix(t_matrix matrix, unsigned int rm_row, unsigned int rm_column
 		i++;
 	}
 	return (new_matrix);
+}
+
+// float minor(t_matrix matrix, unsigned int row, unsigned int column)
+// {
+// 	t_matrix *sub_matrix;
+
+// 	if (matrix.rows != matrix.columns)
+// 		error_exit("minor() error!\n");
+// 	if (matrix.rows == 1 && matrix.rows == 1)
+// 		return (matrix.matrix[0][0]);
+// 	sub_matrix = submatrix(matrix, row, column);
+	
+// }
+
+float determinant(t_matrix matrix)
+{	
+	t_matrix		*sub_matrix;
+	unsigned int	j;
+	float			det;
+	
+	if (matrix.rows != matrix.columns)
+		error_exit("determinant() error!\n");
+	else if (matrix.rows == 1 && matrix.columns == 1)
+		return (matrix.matrix[0][0]);
+	det = 0;
+	j = 0;
+	while (j < matrix.columns)
+	{
+		sub_matrix = submatrix(matrix, 0, j);
+		if (j % 2 == 0)
+			det += matrix.matrix[0][j] * determinant(*sub_matrix);
+		else
+			det += -(matrix.matrix[0][j] * determinant(*sub_matrix));
+		j++;
+	}
+	return (det);
 }
