@@ -124,5 +124,11 @@ _status = determinant()
 if _status != 0:
 	status = 1
 
+print("inverse")
+from inverse.inverse import inverse
+_status = inverse()
+if _status != 0:
+	status = 1
+
 print(f"status: {status}\n")
 exit(status)
