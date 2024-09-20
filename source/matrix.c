@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 16:30:58 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/20 09:41:52 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/20 12:40:31 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,43 +58,6 @@ int matrix_equal(t_matrix ma, t_matrix mb)
 	return (1);
 }
 
-// t_matrix *matrix_matrix_mult(t_matrix ma, t_matrix mb)
-// {
-// 	int ma_rows;
-// 	int ma_columns;
-// 	int mb_rows;
-// 	int mb_columns;
-// 	int mc_rows;
-// 	int mc_columns;
-// 	int result;
-// 	t_matrix *mc;
-	
-// 	if (ma.columns != mb.rows)
-// 		error_exit("matrix_matrix_mult() error!\n");
-// 	mc = create_matrix(ma.rows, mb.columns);
-// 	ma_rows = 0;
-// 	mc_rows = 0;
-// 	mc_columns = 0;
-// 	while (ma_rows < ma.rows)
-// 	{
-// 		mc_columns = 0;
-// 		mb_columns = 0;
-// 		while (mb_columns < mb.columns)
-// 		{
-// 			ma_columns = 0;
-// 			mb_rows = 0;
-// 			result = 0;
-// 			while (ma_columns < ma.columns)
-// 				result += ma.matrix[ma_rows][ma_columns++] * mb.matrix[mb_rows++][mb_columns];
-// 			mc->matrix[mc_rows][mc_columns++] = result;;
-// 			mb_columns++;
-// 		}
-// 		mc_rows++;
-// 		ma_rows++;
-// 	}
-// 	return (mc);
-// }
-
 t_matrix *matrix_matrix_mult(t_matrix ma, t_matrix mb)
 {
 	unsigned int count[3];
@@ -145,10 +108,27 @@ t_matrix *matrix_transpose(t_matrix matrix)
 	return (result);
 }
 
-float det_two_by_two(t_matrix matrix)
+t_matrix *submatrix(t_matrix matrix, unsigned int rm_row, unsigned int rm_column)
 {
-	if (matrix.rows != 2 || matrix.columns != 2)
-		error_exit("det_two_by_two() error!\n");
-	return (matrix.matrix[0][0] * matrix.matrix[1][1]
-		- matrix.matrix[0][1] * matrix.matrix[1][0]);
+	unsigned int i;
+	unsigned int j;
+	t_matrix *new_matrix;
+
+	if (matrix.rows - 1 < rm_row || matrix.columns - 1 < rm_column)
+		error_exit("submatrix() error!\n");
+	new_matrix = create_matrix(matrix.rows - 1, matrix.columns - 1);
+	i = 0;
+	while(i < new_matrix->rows)
+	{
+		new_matrix->matrix[i] = (float *)calloc(new_matrix->columns, sizeof(float));
+		ft_collect_mem(new_matrix->matrix[i]);
+		j = 0;
+		while (j < new_matrix->columns)
+		{
+			new_matrix->matrix[i][j] = matrix.matrix[i + (i >= rm_row)][j + (j >= rm_column)];
+			j++;
+		}
+		i++;
+	}
+	return (new_matrix);
 }
