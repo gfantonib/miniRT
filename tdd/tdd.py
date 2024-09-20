@@ -118,5 +118,11 @@ _status = submatrix()
 if _status != 0:
 	status = 1
 
+print("determinant")
+from determinant.determinant import determinant
+_status = determinant()
+if _status != 0:
+	status = 1
+
 print(f"status: {status}\n")
 exit(status)
