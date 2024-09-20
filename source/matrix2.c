@@ -6,13 +6,34 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 08:17:57 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/20 12:40:45 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/20 18:07:34 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 #include "tuple.h"
 #include "error_exit.h"
+
+// #include <stdio.h>
+// void print_matrix(t_matrix matrix)
+// {
+// 	unsigned int i;
+// 	unsigned int j;
+
+// 	i = 0;
+// 	j = 0;
+// 	while(i < matrix.rows)
+// 	{
+// 		j = 0;
+// 		while(j < matrix.columns)
+// 		{
+// 			printf("%f ", matrix.matrix[i][j]);
+// 			j++;
+// 		}
+// 		printf("\n");
+// 		i++;
+// 	}
+// }
 
 float determinant(t_matrix matrix)
 {	
@@ -37,3 +58,51 @@ float determinant(t_matrix matrix)
 	}
 	return (det);
 }
+
+t_matrix *inverse(t_matrix matrix)
+{
+	t_matrix		*inv;
+	float			det;
+	unsigned int	i;
+	unsigned int	j;
+	
+	if (matrix.rows != matrix.columns)
+		error_exit("inverse() error: matrix must be squared.\n");
+	det = determinant(matrix);
+	if (det == 0)
+		error_exit("inverse() error: cannot inverse matrix with determinant = 0.\n");
+	inv = create_matrix(matrix.rows, matrix.columns);
+	i = 0;
+	while (i < inv->rows)
+	{
+		j = 0;
+		while (j < inv->columns)
+		{
+			if ((i + j) % 2 == 0)
+				inv->matrix[i][j] = determinant(*submatrix(matrix, i, j));
+			else
+				inv->matrix[i][j] = -(determinant(*submatrix(matrix, i, j)));
+			j++;
+		}
+		i++;
+	}
+	// print_matrix(*inv);
+	inv = matrix_transpose(*inv);
+	// printf("\n");
+	// print_matrix(*inv);
+	i = 0;
+	while (i < inv->rows)
+	{
+		j = 0;
+		while (j < inv->columns)
+		{
+			inv->matrix[i][j] = inv->matrix[i][j] / det;
+			j++;
+		}
+		i++;
+	}
+	// printf("\n");
+	// print_matrix(*inv);
+	return (inv);
+}
+
