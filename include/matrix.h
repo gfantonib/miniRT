@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:31:59 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/18 10:56:12 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/20 08:56:07 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@
 
 typedef struct s_matrix
 {
-	float **matrix;
-	int		rows;
-	int		columns;
+	float			**matrix;
+	unsigned int	rows;
+	unsigned int	columns;
 }	t_matrix;
 
 t_matrix	*create_matrix(unsigned int rows, unsigned int columns);
 int 		matrix_equal(t_matrix ma, t_matrix mb);
 t_matrix	*matrix_matrix_mult(t_matrix ma, t_matrix mb);
 t_matrix	*matrix_transpose(t_matrix matrix);
+float		det_two_by_two(t_matrix matrix);
+t_matrix	*submatrix(t_matrix matrix, unsigned int rm_row, unsigned int rm_column);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 16:30:58 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/18 10:53:03 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/20 09:41:52 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ t_matrix *create_matrix(unsigned int rows, unsigned int columns)
 
 int matrix_equal(t_matrix ma, t_matrix mb)
 {
-	int rows;
-	int columns;
+	unsigned int rows;
+	unsigned int columns;
 
 	if (ma.rows != mb.rows || ma.columns != mb.columns)
 		return (0);
@@ -97,7 +97,7 @@ int matrix_equal(t_matrix ma, t_matrix mb)
 
 t_matrix *matrix_matrix_mult(t_matrix ma, t_matrix mb)
 {
-	int count[3];
+	unsigned int count[3];
 	int result;
 	t_matrix *mc;
 
@@ -126,8 +126,8 @@ t_matrix *matrix_matrix_mult(t_matrix ma, t_matrix mb)
 
 t_matrix *matrix_transpose(t_matrix matrix)
 {
-	int i;
-	int j;
+	unsigned int i;
+	unsigned int j;
 	
 	t_matrix *result;
 	result = create_matrix(matrix.columns, matrix.rows);
@@ -143,4 +143,12 @@ t_matrix *matrix_transpose(t_matrix matrix)
 		i++;
 	}
 	return (result);
+}
+
+float det_two_by_two(t_matrix matrix)
+{
+	if (matrix.rows != 2 || matrix.columns != 2)
+		error_exit("det_two_by_two() error!\n");
+	return (matrix.matrix[0][0] * matrix.matrix[1][1]
+		- matrix.matrix[0][1] * matrix.matrix[1][0]);
 }
