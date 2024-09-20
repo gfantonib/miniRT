@@ -112,5 +112,11 @@ _status = matrix_transpose()
 if _status != 0:
 	status = 1
 
+print("submatrix")
+from submatrix.submatrix import submatrix
+_status = submatrix()
+if _status != 0:
+	status = 1
+
 print(f"status: {status}\n")
 exit(status)
