@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 16:30:58 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/20 18:48:55 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/21 10:45:18 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_matrix *matrix_matrix_mult(t_matrix ma, t_matrix mb)
 	t_matrix *mc;
 
 	if (ma.columns != mb.rows)
-		error_exit("matrix_matrix_mult() error!\n");
+		error_exit("matrix_matrix_mult() error: ma.columns must be equal to mb.rows\n");
 	mc = create_matrix(ma.rows, mb.columns);
 	count[0] = 0;
 	while (count[0] < ma.rows)
@@ -115,7 +115,7 @@ t_matrix *submatrix(t_matrix matrix, unsigned int rm_row, unsigned int rm_column
 	t_matrix *new_matrix;
 
 	if (matrix.rows - 1 < rm_row || matrix.columns - 1 < rm_column)
-		error_exit("submatrix() error!\n");
+		error_exit("submatrix() error: trying to remove a non existing row or column\n");
 	new_matrix = create_matrix(matrix.rows - 1, matrix.columns - 1);
 	i = 0;
 	while(i < new_matrix->rows)

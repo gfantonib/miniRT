@@ -27,14 +27,14 @@ void normalize(t_tuple *vector)
 float dot_prod(t_tuple vec_a, t_tuple vec_b)
 {
 	if (vec_a.w != 0 || vec_b.w != 0)
-		error_exit("dot_prod() error!\n");
+		error_exit("dot_prod() error: both arguments must be vectors\n");
 	return (vec_a.x * vec_b.x + vec_a.y * vec_b.y + vec_a.z * vec_b.z);
 }
 
 t_tuple cross_prod(t_tuple vec_a, t_tuple vec_b)
 {
 	if (vec_a.w != 0 || vec_b.w != 0)
-		error_exit("cross_prod() error!\n");
+		error_exit("cross_prod() error: both arguments must be vectors\n");
 	t_tuple result_vec;
 	result_vec.w = 0;
 	result_vec.x = vec_a.y * vec_b.z - vec_a.z * vec_b.y;

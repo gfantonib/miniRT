@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 08:17:57 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/20 19:35:07 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/21 10:46:43 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ float determinant(t_matrix matrix)
 	float			det;
 	
 	if (matrix.rows != matrix.columns)
-		error_exit("determinant() error!\n");
+		error_exit("determinant() error: matrix must be squared\n");
 	else if (matrix.rows == 1 && matrix.columns == 1)
 		return (matrix.matrix[0][0]);
 	det = 0;

@@ -49,7 +49,7 @@ def determinant():
 
 	arg_list.append(["2", "3", "1 2 3 4 5 6"])
 	stdout_ref_list.append("")
-	stderr_ref_list.append("determinant() error!\n")
+	stderr_ref_list.append("determinant() error: matrix must be squared\n")
 
 	# Runing and collecting output and error
 	stdout_list = []

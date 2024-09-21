@@ -37,7 +37,7 @@ def submatrix():
 
 	arg_list.append(["2", "2", "1 2 3 4", "2", "1"])
 	stdout_ref_list.append("")
-	stderr_ref_list.append("submatrix() error!\n")
+	stderr_ref_list.append("submatrix() error: trying to remove a non existing row or column\n")
 
 	# Runing and collecting output and error
 	stdout_list = []

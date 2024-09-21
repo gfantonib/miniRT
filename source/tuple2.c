@@ -61,6 +61,6 @@ t_tuple tuple_scalar_div(t_tuple a, float b)
 float	magnitude(t_tuple vector)
 {
 	if (vector.w != 0)
-		error_exit("magnitude() error!\n");
+		error_exit("magnitude() error: argument must be a vector\n");
 	return(sqrtf(powf(vector.x, 2) + powf(vector.y, 2) + powf(vector.z, 2)));
 }

@@ -33,11 +33,11 @@ def matrix_mult():
 
 	arg_list.append(["1", "3", "1", "3", "2 4 6", "3 5 7"])
 	stdout_ref_list.append("")
-	stderr_ref_list.append("matrix_matrix_mult() error!\n")
+	stderr_ref_list.append("matrix_matrix_mult() error: ma.columns must be equal to mb.rows\n")
 	
 	arg_list.append(["3", "1", "3", "1", "1 2 3", "4 5 6"])
 	stdout_ref_list.append("")
-	stderr_ref_list.append("matrix_matrix_mult() error!\n")
+	stderr_ref_list.append("matrix_matrix_mult() error: ma.columns must be equal to mb.rows\n")
 
 	arg_list.append(["3", "1", "1", "3", "1 2 3", "4 5 6"])
 	stdout_ref_list.append("4.000000 5.000000 6.000000 \n8.000000 10.000000 12.000000 \n12.000000 15.000000 18.000000 \n")

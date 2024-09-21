@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:31:52 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/17 15:57:59 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/21 10:50:28 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ t_tuple color_color_mult(t_tuple a, t_tuple b)
 	if (a.w == COLOR && b.w == COLOR)
 		color.w = COLOR;
 	else
-		error_exit("color_color_mult() error!\n");
+		error_exit("color_color_mult() error: both arguments must be colors\n");
 	return (color);
 }
