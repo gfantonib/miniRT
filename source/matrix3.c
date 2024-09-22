@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 11:42:23 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/22 12:52:23 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/22 13:10:07 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,46 @@ void	matrix_neg(t_matrix *matrix)
 		}
 		i++;
 	}
+}
+
+t_matrix *matrix_scalar_mult(t_matrix ma, float scalar)
+{
+	unsigned int i;
+	unsigned int j;
+	t_matrix *mc;
+	
+	mc = create_matrix(ma.rows, ma.columns);
+	i = 0;
+	while (i < ma.rows)
+	{
+		j = 0;
+		while (j < ma.columns)
+		{
+			mc->matrix[i][j] = ma.matrix[i][j] * scalar;
+			j++;
+		}
+		i++;
+	}
+	return (mc);
+}
+
+t_matrix *matrix_scalar_div(t_matrix ma, float scalar)
+{
+	unsigned int i;
+	unsigned int j;
+	t_matrix *mc;
+	
+	mc = create_matrix(ma.rows, ma.columns);
+	i = 0;
+	while (i < ma.rows)
+	{
+		j = 0;
+		while (j < ma.columns)
+		{
+			mc->matrix[i][j] = ma.matrix[i][j] / scalar;
+			j++;
+		}
+		i++;
+	}
+	return (mc);
 }

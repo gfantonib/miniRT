@@ -27,7 +27,7 @@ def tuple_scalar_mult_div():
 	# Creating args
 	# battery = ["str on list", "dup on list", "max on list", "nothing on list"]
 	arg_list = [["2", "-4", "8", "2"]]
-	stdout_ref_list = ["(4.000000, -8.000000, 16.000000, 0)\n(1.000000, -2.000000, 4.000000, 0)\n"]
+	stdout_ref_list = ["4.000000 \n-8.000000 \n16.000000 \n0.000000 \n1.000000 \n-2.000000 \n4.000000 \n0.000000 \n"]
 	stderr_ref_list = [""]
 
 	# arg_list.append(["1.5", "2.5", "3.5", "0.5", "0.5", "0.5"])

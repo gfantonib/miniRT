@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:31:59 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/22 12:52:10 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/22 13:10:40 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ t_matrix	*inverse(t_matrix matrix);
 t_matrix	*matrix_add(t_matrix ma, t_matrix mb);
 t_matrix	*matrix_minus(t_matrix ma, t_matrix mb);
 void		matrix_neg(t_matrix *matrix);
+t_matrix	*matrix_scalar_mult(t_matrix ma, float scalar);
+t_matrix	*matrix_scalar_div(t_matrix ma, float scalar);
 
 t_matrix	*create_point(float x, float y, float z);
 t_matrix	*create_vector(float x, float y, float z);
