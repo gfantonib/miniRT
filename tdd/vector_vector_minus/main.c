@@ -3,19 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leduard2 <leduard2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/09 17:54:43 by leduard2         ###   ########.fr       */
+/*   Updated: 2024/09/22 12:26:43 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
 #include <stdio.h>
+#include "matrix.h"
 
-void print_tuple(t_tuple tuple)
+void print_matrix(t_matrix matrix)
 {
-	printf("(%f, %f, %f, %i)\n", tuple.x, tuple.y, tuple.z, tuple.w);
+	unsigned int i;
+	unsigned int j;
+
+	i = 0;
+	j = 0;
+	while(i < matrix.rows)
+	{
+		j = 0;
+		while(j < matrix.columns)
+		{
+			printf("%f ", matrix.matrix[i][j] );
+			j++;
+		}
+		printf("\n");
+		i++;
+	}	
 }
 
 int main(int argc, char *argv[])
@@ -25,10 +40,10 @@ int main(int argc, char *argv[])
 		printf("TEST ERROR!\n");
 		return (1);
 	}
-	t_tuple *a = create_vector(atof(argv[1]), atof(argv[2]), atof(argv[3]));
-	t_tuple *b = create_vector(atof(argv[4]), atof(argv[5]), atof(argv[6]));
-	t_tuple c = tuple_minus(*a, *b);
-	print_tuple(c);
-	ft_free_trashman();;
+	t_matrix *a = create_vector(atof(argv[1]), atof(argv[2]), atof(argv[3]));
+	t_matrix *b = create_vector(atof(argv[4]), atof(argv[5]), atof(argv[6]));
+	t_matrix *c = matrix_minus(*a, *b);
+	print_matrix(*c);
+	ft_free_trashman();
 	return (0);
 }

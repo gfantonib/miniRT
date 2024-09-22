@@ -27,15 +27,15 @@ def tuple_neg():
 	# Creating args
 	# battery = ["str on list", "dup on list", "max on list", "nothing on list"]
 	arg_list = [["1", "2", "3"]]
-	stdout_ref_list = ["(-1.000000, -2.000000, -3.000000, 0)\n"]
+	stdout_ref_list = ["-1.000000 \n-2.000000 \n-3.000000 \n-0.000000 \n"]
 	stderr_ref_list = [""]
 
 	arg_list.append(["1.5", "2.5", "3.5"])
-	stdout_ref_list.append("(-1.500000, -2.500000, -3.500000, 0)\n")
+	stdout_ref_list.append("-1.500000 \n-2.500000 \n-3.500000 \n-0.000000 \n")
 	stderr_ref_list.append("")
 
 	arg_list.append(["-1.5", "-2.5", "-3.5"])
-	stdout_ref_list.append("(1.500000, 2.500000, 3.500000, 0)\n")
+	stdout_ref_list.append("1.500000 \n2.500000 \n3.500000 \n-0.000000 \n")
 	stderr_ref_list.append("")
 
 	# Runing and collecting output and error

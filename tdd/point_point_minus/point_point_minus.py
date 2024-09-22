@@ -27,19 +27,19 @@ def point_point_minus():
 	# Creating args
 	# battery = ["str on list", "dup on list", "max on list", "nothing on list"]
 	arg_list = [["1", "2", "3", "1", "2", "3"]]
-	stdout_ref_list = ["(0.000000, 0.000000, 0.000000, 0)\n"]
+	stdout_ref_list = ["0.000000 \n0.000000 \n0.000000 \n0.000000 \n"]
 	stderr_ref_list = [""]
 
 	arg_list.append(["1.5", "2.5", "3.5", "0.5", "0.5", "0.5"])
-	stdout_ref_list.append("(1.000000, 2.000000, 3.000000, 0)\n")
+	stdout_ref_list.append("1.000000 \n2.000000 \n3.000000 \n0.000000 \n")
 	stderr_ref_list.append("")
 
 	arg_list.append(["1.5", "2.5", "3.5", "-0.5", "-0.5", "-0.5"])
-	stdout_ref_list.append("(2.000000, 3.000000, 4.000000, 0)\n")
+	stdout_ref_list.append("2.000000 \n3.000000 \n4.000000 \n0.000000 \n")
 	stderr_ref_list.append("")
 
 	arg_list.append(["-1.5", "-2.5", "-3.5", "0.5", "0.5", "0.5"])
-	stdout_ref_list.append("(-2.000000, -3.000000, -4.000000, 0)\n")
+	stdout_ref_list.append("-2.000000 \n-3.000000 \n-4.000000 \n0.000000 \n")
 	stderr_ref_list.append("")
 
 	# Runing and collecting output and error

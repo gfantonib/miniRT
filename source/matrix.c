@@ -6,12 +6,12 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 16:30:58 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/21 10:45:18 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/22 10:45:39 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
-#include "tuple.h"
+// #include "tuple.h"
 #include "error_exit.h"
 
 t_matrix *create_matrix(unsigned int rows, unsigned int columns)

@@ -6,12 +6,11 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 08:17:57 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/21 10:46:43 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/22 12:15:59 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
-#include "tuple.h"
 #include "error_exit.h"
 
 static void build_cofactor_matrix(t_matrix *inv, t_matrix matrix);
@@ -95,4 +94,27 @@ static void divide_by_det(t_matrix *inv, float det)
 		}
 		i++;
 	}
+}
+
+t_matrix *matrix_add(t_matrix ma, t_matrix mb)
+{
+	unsigned int i;
+	unsigned int j;
+	t_matrix *mc;
+	
+	if (ma.rows != mb.rows || ma.columns != mb.columns)
+		error_exit("matrix_add() error: trying to add matrices of different sizes\n");
+	mc = create_matrix(ma.rows, mb.columns);
+	i = 0;
+	while (i < ma.rows)
+	{
+		j = 0;
+		while (j < ma.columns)
+		{
+			mc->matrix[i][j] = ma.matrix[i][j] + mb.matrix[i][j];
+			j++;
+		}
+		i++;
+	}
+	return (mc);
 }

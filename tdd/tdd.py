@@ -16,11 +16,11 @@ _status = vector_vector_add()
 if _status != 0:
 	status = 1
 
-print("point point add")
-from point_point_add.point_point_add import point_point_add
-_status = point_point_add()
-if _status != 0:
-	status = 1
+# print("point point add")
+# from point_point_add.point_point_add import point_point_add
+# _status = point_point_add()
+# if _status != 0:
+# 	status = 1
 
 print("point point minus")
 from point_point_minus.point_point_minus import point_point_minus
