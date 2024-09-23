@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/23 11:09:01 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/23 11:15:47 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ float dot_prod(t_matrix veca, t_matrix vecb)
 	unsigned int i;
 	
 	if (veca.columns != 1 || vecb.columns != 1)
-		error_exit("dot_prod() error: both arguments must be vectors\n");
+		error_exit("dot_prod() error: both arguments must be vertical vectors\n");
 	if (veca.rows != vecb.rows)
-		error_exit("dot_prod() error: both arguments must have the same size\n");
+		error_exit("dot_prod() error: both arguments must have the same number of rows\n");
 	scalar = 0;
 	i = 0;
 	while (i < veca.rows)
@@ -59,9 +59,9 @@ float dot_prod(t_matrix veca, t_matrix vecb)
 t_matrix *cross_prod(t_matrix veca, t_matrix vecb)
 {
 	if (veca.columns != 1 || vecb.columns != 1)
-		error_exit("cross_prod() error: both arguments must be vectors\n");
-	if (veca.rows != vecb.rows)
-		error_exit("cross_prod() error: both arguments must have the same size\n");
+		error_exit("cross_prod() error: both arguments must be vertical vectors\n");
+	if (veca.rows != 4 || vecb.rows != 4)
+		error_exit("cross_prod() error: both arguments must have four rows\n");
 	return (create_vector(veca.matrix[1][0] * vecb.matrix[2][0] - veca.matrix[2][0] * vecb.matrix[1][0],
 		-1 * (veca.matrix[0][0] * vecb.matrix[2][0] - veca.matrix[2][0] * vecb.matrix[0][0]),
 		veca.matrix[0][0] * vecb.matrix[1][0] - veca.matrix[1][0] * vecb.matrix[0][0]));
