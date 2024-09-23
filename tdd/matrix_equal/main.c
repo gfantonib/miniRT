@@ -6,11 +6,10 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/20 10:15:21 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/23 10:54:01 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
 #include "matrix.h"
 #include <stdio.h>
 
