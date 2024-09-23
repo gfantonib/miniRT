@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/23 09:50:37 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/23 10:23:25 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,29 @@ float dot_prod(t_matrix veca, t_matrix vecb)
 	return (scalar);
 }
 
-// t_tuple* create_vector(float x, float y, float z)
+t_matrix *cross_prod(t_matrix veca, t_matrix vecb)
+{
+	if (veca.columns != 1 || vecb.columns != 1)
+		error_exit("cross_prod() error: both arguments must be vectors\n");
+	if (veca.rows != vecb.rows)
+		error_exit("cross_prod() error: both arguments must have the same size\n");
+	return (create_vector(veca.matrix[1][0] * vecb.matrix[2][0] - veca.matrix[2][0] * vecb.matrix[1][0],
+		-1 * (veca.matrix[0][0] * vecb.matrix[2][0] - veca.matrix[2][0] * vecb.matrix[0][0]),
+		veca.matrix[0][0] * vecb.matrix[1][0] - veca.matrix[1][0] * vecb.matrix[0][0]));
+}
+
+	// if (vec_a.w != 0 || vec_b.w != 0)
+	// 	error_exit("cross_prod() error: both arguments must be vectors\n");
+	// t_matrix result_vec;
+	// result_vec.w = 0;
+	// result_vec.x = vec_a.y * vec_b.z - vec_a.z * vec_b.y;
+	// result_vec.y = -1 * (vec_a.x * vec_b.z - vec_a.z * vec_b.x);
+	// result_vec.z = vec_a.x * vec_b.y - vec_a.y * vec_b.x;
+	// return (result_vec) ;
+
+
+	
+// t_matrix* create_vector(float x, float y, float z)
 // {
 // 	t_tuple *vector;
 

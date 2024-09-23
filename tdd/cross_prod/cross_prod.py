@@ -28,19 +28,19 @@ def cross_prod():
 	# Creating args
 	# battery = ["str on list", "dup on list", "max on list", "nothing on list"]
 	arg_list = [["1", "0", "0", "0", "1", "0"]]
-	stdout_ref_list = ["(0.000000, -0.000000, 1.000000, 0)\n"]
+	stdout_ref_list = ["0.000000 \n-0.000000 \n1.000000 \n0.000000 \n"]
 	stderr_ref_list = [""]
 
 	arg_list.append(["0", "1", "0", "0", "0", "1"])
-	stdout_ref_list.append("(1.000000, -0.000000, 0.000000, 0)\n")
+	stdout_ref_list.append("1.000000 \n-0.000000 \n0.000000 \n0.000000 \n")
 	stderr_ref_list.append("")
 
 	arg_list.append(["0", "0", "1", "1", "0", "0"])
-	stdout_ref_list.append("(0.000000, 1.000000, 0.000000, 0)\n")
+	stdout_ref_list.append("0.000000 \n1.000000 \n0.000000 \n0.000000 \n")
 	stderr_ref_list.append("")
 
 	arg_list.append(["0", "1", "0", "1", "0", "0"])
-	stdout_ref_list.append("(0.000000, -0.000000, -1.000000, 0)\n")
+	stdout_ref_list.append("0.000000 \n-0.000000 \n-1.000000 \n0.000000 \n")
 	stderr_ref_list.append("")
 
 	# Runing and collecting output and error
