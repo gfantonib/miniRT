@@ -28,7 +28,7 @@ def color_operation():
 	# Creating args
 	# battery = ["str on list", "dup on list", "max on list", "nothing on list"]
 	arg_list = [["1.0", "0.2", "0.4", "0.9", "1.0", "0.1"]]
-	stdout_ref_list = ["(0.900000, 0.200000, 0.040000, 2)\n(1.900000, 1.200000, 0.500000, 2)\n(0.100000, -0.800000, 0.300000, 2)\n"]
+	stdout_ref_list = ["0.900000 \n0.200000 \n0.040000 \n1.900000 \n1.200000 \n0.500000 \n0.100000 \n-0.800000 \n0.300000 \n"]
 	stderr_ref_list = [""]
 
 	# arg_list.append(["1.0", "0.2", "0.4", "0.9", "1.0", "0.1"])

@@ -6,36 +6,34 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:31:52 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/21 10:50:28 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/23 10:50:33 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
+#include "matrix.h"
 #include "error_exit.h"
 
-t_tuple* create_color(float red, float green, float blue)
+t_matrix* create_color(float red, float green, float blue)
 {
-	t_tuple *color;
+	t_matrix *color;
 
-	color = (t_tuple *)ft_calloc(sizeof(t_tuple), 1);
-	ft_collect_mem(color);
-	color->x = red;
-	color->y = green;
-	color->z = blue;
-	color->w = COLOR;
+	color = create_matrix(3, 1);
+	color->matrix[0][0] = red;
+	color->matrix[1][0] = green;
+	color->matrix[2][0] = blue;
 	return (color);
 }
 
-t_tuple color_color_mult(t_tuple a, t_tuple b)
+t_matrix* color_color_mult(t_matrix color_a, t_matrix color_b)
 {
-	t_tuple color;
+	t_matrix *result_color;
 
-	color.x = a.x * b.x;
-	color.y = a.y * b.y;
-	color.z = a.z * b.z;
-	if (a.w == COLOR && b.w == COLOR)
-		color.w = COLOR;
-	else
+	if (color_a.columns != 1 || color_b.columns != 1)
 		error_exit("color_color_mult() error: both arguments must be colors\n");
-	return (color);
+	if (color_a.rows != 3 || color_b.rows != 3)
+		error_exit("color_color_mult() error: both arguments must have the same size\n");
+	result_color = create_color(color_a.matrix[0][0] * color_b.matrix[0][0],
+		color_a.matrix[1][0] * color_b.matrix[1][0],
+		color_a.matrix[2][0] * color_b.matrix[2][0]);
+	return (result_color);
 }
