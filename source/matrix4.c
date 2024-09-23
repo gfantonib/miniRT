@@ -6,12 +6,11 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 11:42:23 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/23 09:31:49 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/23 11:10:02 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
-// #include "tuple.h"
 #include "error_exit.h"
 #include "epsilon.h"
 

@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:31:59 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/23 10:44:37 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/23 11:07:35 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ void		normalize(t_matrix *matrix);
 
 t_matrix	*create_point(float x, float y, float z);
 t_matrix	*create_vector(float x, float y, float z);
-float dot_prod(t_matrix veca, t_matrix vecb);
-t_matrix *cross_prod(t_matrix veca, t_matrix vecb);
+float 		dot_prod(t_matrix veca, t_matrix vecb);
+t_matrix	*cross_prod(t_matrix veca, t_matrix vecb);
 
-t_matrix* create_color(float red, float green, float blue);
-t_matrix* color_color_mult(t_matrix color_a, t_matrix color_b);
+t_matrix*	create_color(float red, float green, float blue);
+t_matrix*	color_color_mult(t_matrix color_a, t_matrix color_b);
 
 #endif
