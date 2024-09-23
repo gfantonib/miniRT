@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   matrix4.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/23 09:35:15 by gfantoni         ###   ########.fr       */
+/*   Created: 2024/09/22 11:42:23 by gfantoni          #+#    #+#             */
+/*   Updated: 2024/09/23 09:31:49 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
-#include <stdio.h>
+// #include "tuple.h"
+#include "error_exit.h"
+#include "epsilon.h"
 
-int main(int argc, char *argv[])
-{	
-	if (argc != 4)
+void	normalize(t_matrix *matrix)
+{
+	float mag;
+	unsigned int i;
+	unsigned int j;
+	
+	mag = magnitude(*matrix);
+	i = 0;
+	while (i < matrix->rows)
 	{
-		printf("TEST ERROR!\n");
-		return (1);
+		j = 0;
+		while (j < matrix->columns)
+		{
+			matrix->matrix[i][j] = matrix->matrix[i][j] / mag;
+			j++;
+		}
+		i++;
 	}
-	t_matrix *vec = create_vector(atof(argv[1]), atof(argv[2]), atof(argv[3]));
-	normalize(vec);
-	float mag = magnitude(*vec);
-	printf("%f\n", mag);
-	ft_free_trashman();
-	return (0);
 }
