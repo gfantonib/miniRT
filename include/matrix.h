@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:31:59 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/23 14:15:51 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/23 18:27:45 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "../libft/libft.h"
 # include "math.h"
 # include "stdlib.h"
+
+#define PI 3.141592654
 
 typedef struct s_matrix
 {
@@ -61,5 +63,12 @@ t_matrix	*cross_prod(t_matrix veca, t_matrix vecb);
 // color.c
 t_matrix*	create_color(float red, float green, float blue);
 t_matrix*	color_color_mult(t_matrix color_a, t_matrix color_b);
+
+// transformation.c
+t_matrix *translation(float x, float y, float z);
+t_matrix *scaling(float x, float y, float z);
+t_matrix *rotate_x(float radians);
+t_matrix *rotate_y(float radians);
+t_matrix *rotate_z(float radians);
 
 #endif

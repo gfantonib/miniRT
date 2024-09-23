@@ -6,13 +6,11 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:19:18 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/23 18:21:16 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/23 18:46:38 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
-
-#define PI 3.141592654
 
 t_matrix *translation(float x, float y, float z)
 {
@@ -51,6 +49,7 @@ t_matrix *rotate_x(float radians)
 	matrix->matrix[2][1] = sin(radians);
 	matrix->matrix[2][2] = cos(radians);
 	matrix->matrix[3][3] = 1;
+	return (matrix);
 }
 
 t_matrix *rotate_y(float radians)
@@ -63,6 +62,7 @@ t_matrix *rotate_y(float radians)
 	matrix->matrix[2][1] = -sin(radians);
 	matrix->matrix[2][2] = cos(radians);
 	matrix->matrix[3][3] = 1;
+	return (matrix);
 }
 
 t_matrix *rotate_z(float radians)
@@ -75,4 +75,5 @@ t_matrix *rotate_z(float radians)
 	matrix->matrix[1][2] = cos(radians);
 	matrix->matrix[2][2] = 1;
 	matrix->matrix[3][3] = 1;
+	return (matrix);
 }
