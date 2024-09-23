@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/23 11:26:17 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/23 11:29:06 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ float dot_prod(t_matrix veca, t_matrix vecb)
 	if (veca.columns != 1 || vecb.columns != 1)
 		error_exit("dot_prod() error: both arguments must be vertical vectors\n");
 	if (veca.rows != 4 || vecb.rows != 4)
-		error_exit("dot_prod() error: both arguments must have the same number of rows\n");;
+		error_exit("dot_prod() error: both arguments must have four rows\n");;
 	return (veca.matrix[0][0] * vecb.matrix[0][0]
 		+ veca.matrix[1][0] * vecb.matrix[1][0]
 		+ veca.matrix[2][0] * vecb.matrix[2][0]);
