@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/23 11:15:47 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/23 11:18:34 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,13 @@ t_matrix* create_vector(float x, float y, float z)
 
 float dot_prod(t_matrix veca, t_matrix vecb)
 {
-	float scalar;
-	unsigned int i;
-	
 	if (veca.columns != 1 || vecb.columns != 1)
 		error_exit("dot_prod() error: both arguments must be vertical vectors\n");
 	if (veca.rows != vecb.rows)
-		error_exit("dot_prod() error: both arguments must have the same number of rows\n");
-	scalar = 0;
-	i = 0;
-	while (i < veca.rows)
-	{
-		scalar += veca.matrix[i][0] * vecb.matrix[i][0];
-		i++;
-	}
-	return (scalar);
+		error_exit("dot_prod() error: both arguments must have the same number of rows\n");;
+	return (veca.matrix[0][0] * vecb.matrix[0][0]
+		+ veca.matrix[1][0] * vecb.matrix[1][0]
+		+ veca.matrix[2][0] * vecb.matrix[2][0]);
 }
 
 t_matrix *cross_prod(t_matrix veca, t_matrix vecb)
