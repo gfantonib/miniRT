@@ -27,24 +27,20 @@ def magnitude():
 
 	# Creating args
 	# battery = ["str on list", "dup on list", "max on list", "nothing on list"]
-	arg_list = [["0", "1", "0"]]
-	stdout_ref_list = ["1.000000\n"]
+	arg_list = [["5", "5", "1 2 2 1 0 0 1 0 1 2 2 0 2 0 1 1 1 1 1 1 0 2 1 0 2"]]
+	stdout_ref_list = ["6.244998\n"]
 	stderr_ref_list = [""]
 
-	arg_list.append(["0", "0", "1"])
-	stdout_ref_list.append("1.000000\n")
+	arg_list.append(["3", "2", "2 1 1 2 2 2"])
+	stdout_ref_list.append("4.242640\n")
 	stderr_ref_list.append("")
 
-	arg_list.append(["1", "0", "0"])
-	stdout_ref_list.append("1.000000\n")
+	arg_list.append(["1", "4", "3 0 4 0"])
+	stdout_ref_list.append("5.000000\n")
 	stderr_ref_list.append("")
 
-	arg_list.append(["1", "2", "3"])
-	stdout_ref_list.append(f"{str(round(sqrt(14)))}.000000\n")
-	stderr_ref_list.append("")
-
-	arg_list.append(["-1", "-2", "-3"])
-	stdout_ref_list.append(f"{str(round(sqrt(14)))}.000000\n")
+	arg_list.append(["4", "1", "2 2 1 1"])
+	stdout_ref_list.append(f"3.162278\n")
 	stderr_ref_list.append("")
 
 	# Runing and collecting output and error

@@ -3,26 +3,75 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leduard2 <leduard2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/09 17:54:43 by leduard2         ###   ########.fr       */
+/*   Updated: 2024/09/23 08:37:19 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
 #include <stdio.h>
+#include "matrix.h"
+
+void print_matrix(t_matrix matrix)
+{
+	unsigned int i;
+	unsigned int j;
+
+	i = 0;
+	j = 0;
+	while(i < matrix.rows)
+	{
+		j = 0;
+		while(j < matrix.columns)
+		{
+			printf("%f ", matrix.matrix[i][j] );
+			j++;
+		}
+		printf("\n");
+		i++;
+	}	
+}
+
+void fill_matrix(t_matrix *matrix, char **values)
+{
+	unsigned int i;
+	unsigned int j;
+	unsigned int k;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	while(i < matrix->rows)
+	{
+		j = 0;
+		while(j < matrix->columns)
+		{
+			matrix->matrix[i][j] = atof(values[k]);
+			ft_collect_mem(values[k]);
+			j++;
+			k++;
+		}
+		i++;
+	}
+}
 
 int main(int argc, char *argv[])
-{	
+{
+	t_matrix	*ma;
+	char		**ma_values;
+	
 	if (argc != 4)
 	{
 		printf("TEST ERROR!\n");
 		return (1);
 	}
-	t_tuple *a = create_vector(atof(argv[1]), atof(argv[2]), atof(argv[3]));
-	float mag = magnitude(*a);
-	printf("%f\n", roundf(mag));
-	ft_free_trashman();;
+	ma = create_matrix(atoi(argv[1]), atoi(argv[2]));
+	ma_values = ft_split(argv[3], ' ');
+	fill_matrix(ma, ma_values);
+	ft_collect_mem(ma_values);
+	float mag = magnitude(*ma);
+	printf("%f\n", mag);
+	ft_free_trashman();
 	return (0);
 }

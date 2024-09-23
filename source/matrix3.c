@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 11:42:23 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/22 13:10:07 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/22 14:56:07 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,25 @@ t_matrix *matrix_scalar_div(t_matrix ma, float scalar)
 		i++;
 	}
 	return (mc);
+}
+
+float magnitude(t_matrix matrix)
+{
+    float sum;
+    unsigned int i;
+    unsigned int j;
+	
+	sum = 0;
+	i = 0;
+    while (i < matrix.rows)
+    {
+        j = 0;
+        while (j < matrix.columns)
+        {
+            sum += matrix.matrix[i][j] * matrix.matrix[i][j];
+            j++;
+        }
+        i++;
+    }
+    return (sqrt(sum));
 }
