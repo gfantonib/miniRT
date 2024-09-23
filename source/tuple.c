@@ -6,12 +6,13 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:32:49 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/22 11:49:03 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/23 09:50:37 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include "tuple.h"
 #include "matrix.h"
+#include "error_exit.h"
 
 t_matrix* create_point(float x, float y, float z)
 {
@@ -35,6 +36,25 @@ t_matrix* create_vector(float x, float y, float z)
 	vector->matrix[2][0] = z;
 	vector->matrix[3][0] = VECTOR;
 	return (vector);
+}
+
+float dot_prod(t_matrix veca, t_matrix vecb)
+{
+	float scalar;
+	unsigned int i;
+	
+	if (veca.columns != 1 || vecb.columns != 1)
+		error_exit("dot_prod() error: both arguments must be vectors\n");
+	if (veca.rows != vecb.rows)
+		error_exit("dot_prod() error: both arguments must have the same size\n");
+	scalar = 0;
+	i = 0;
+	while (i < veca.rows)
+	{
+		scalar += veca.matrix[i][0] * vecb.matrix[i][0];
+		i++;
+	}
+	return (scalar);
 }
 
 // t_tuple* create_vector(float x, float y, float z)

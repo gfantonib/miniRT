@@ -13,23 +13,23 @@
 #include "tuple.h"
 #include "error_exit.h"
 
-void normalize(t_tuple *vector)
-{
-	float	mag;
+// void normalize(t_tuple *vector)
+// {
+// 	float	mag;
 
-	mag = magnitude(*vector);
-	vector->x /= mag;
-	vector->y /= mag;
-	vector->z /= mag;
-	vector->w /= mag;
-}
+// 	mag = magnitude(*vector);
+// 	vector->x /= mag;
+// 	vector->y /= mag;
+// 	vector->z /= mag;
+// 	vector->w /= mag;
+// }
 
-float dot_prod(t_tuple vec_a, t_tuple vec_b)
-{
-	if (vec_a.w != 0 || vec_b.w != 0)
-		error_exit("dot_prod() error: both arguments must be vectors\n");
-	return (vec_a.x * vec_b.x + vec_a.y * vec_b.y + vec_a.z * vec_b.z);
-}
+// float dot_prod(t_tuple vec_a, t_tuple vec_b)
+// {
+// 	if (vec_a.w != 0 || vec_b.w != 0)
+// 		error_exit("dot_prod() error: both arguments must be vectors\n");
+// 	return (vec_a.x * vec_b.x + vec_a.y * vec_b.y + vec_a.z * vec_b.z);
+// }
 
 t_tuple cross_prod(t_tuple vec_a, t_tuple vec_b)
 {

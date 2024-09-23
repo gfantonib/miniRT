@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:31:59 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/23 09:31:56 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/23 09:47:08 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void		normalize(t_matrix *matrix);
 
 t_matrix	*create_point(float x, float y, float z);
 t_matrix	*create_vector(float x, float y, float z);
+float dot_prod(t_matrix veca, t_matrix vecb);
 
 
 #endif
