@@ -4,7 +4,7 @@ import os
 import subprocess
 from numpy import sqrt
 
-def inverse():
+def rotation():
 	exit_status = 0
 	
 	# Ensure the script runs from its own directory
@@ -27,21 +27,9 @@ def inverse():
 
 	# Creating args
 	# battery = ["str on list", "dup on list", "max on list", "nothing on list"]
-	arg_list = [["3", "3", "11 15 0 -1 2 21 7 8 9"]]
-	stdout_ref_list = ["1.000000 0.000000 0.000000 \n0.000000 1.000000 0.000000 \n0.000000 0.000000 1.000000 \n"]
+	arg_list = [[""]]
+	stdout_ref_list = ["0.000000 \n0.707107 \n0.707107 \n1.000000 \n\n0.707107 \n0.000000 \n0.707107 \n1.000000 \n\n-0.707107 \n0.707107 \n0.000000 \n1.000000 \n"]
 	stderr_ref_list = [""]
-
-	arg_list.append(["4", "4", "-5 2 6 -8 1 -5 1 8 7 7 -6 -7 1 -3 7 4"])
-	stdout_ref_list.append("1.000000 0.000000 0.000000 0.000000 \n0.000000 1.000000 0.000000 0.000000 \n0.000000 0.000000 1.000000 0.000000 \n0.000000 0.000000 0.000000 1.000000 \n")
-	stderr_ref_list.append("")
-
-	arg_list.append(["2", "3", "1 2 3 4 5 6"])
-	stdout_ref_list.append("")
-	stderr_ref_list.append("inverse() error: matrix must be squared\n")
-
-	arg_list.append(["3", "3", "1 2 3 4 5 6 7 8 9"])
-	stdout_ref_list.append("")
-	stderr_ref_list.append("inverse() error: cannot inverse matrix with determinant = 0\n")
 
 	# Runing and collecting output and error
 	stdout_list = []
@@ -79,6 +67,6 @@ def inverse():
 	return exit_status
 
 if __name__ == '__main__':
-	exit_status = inverse()
+	exit_status = rotation()
 	print(f"exit_status: {exit_status}")
 	exit(exit_status)
