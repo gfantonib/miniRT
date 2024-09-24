@@ -130,5 +130,11 @@ _status = inverse()
 if _status != 0:
 	status = 1
 
+print("rotation")
+from rotation.rotation import rotation
+_status = rotation()
+if _status != 0:
+	status = 1
+
 print(f"status: {status}\n")
 exit(status)
