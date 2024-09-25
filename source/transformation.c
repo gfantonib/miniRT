@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:19:18 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/23 18:46:38 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:01:54 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ t_matrix *rotate_z(float radians)
 	matrix = create_matrix(4, 4);
 	matrix->matrix[0][0] = cos(radians);
 	matrix->matrix[0][1] = -sin(radians);
-	matrix->matrix[1][1] = sin(radians);
-	matrix->matrix[1][2] = cos(radians);
+	matrix->matrix[1][0] = sin(radians);
+	matrix->matrix[1][1] = cos(radians);
 	matrix->matrix[2][2] = 1;
 	matrix->matrix[3][3] = 1;
 	return (matrix);
