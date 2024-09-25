@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/25 17:55:39 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/25 19:05:25 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,22 @@ int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
+unsigned int dominus_trans(float value, unsigned int size)
+{
+	return ((unsigned int)round((value + 1.0) / (2.0 / (float)size)));
+}
+
 void safe_put_pixel(float x, float y, mlx_image_t *image)
 {
-	int intx;
-	int inty;
+	unsigned int x_pixel;
+	unsigned int y_pixel;
 	
-	x = (x + 1.0) / (2.0 / (float)WIDTH); 
-	y = (y + 1.0) / (2.0 / (float)HEIGHT);
-	intx = round(x);
-	inty = round(y);
-	if (intx >= WIDTH || inty - 1 >= HEIGHT)
+	x_pixel = dominus_trans(x, WIDTH);
+	y_pixel = dominus_trans(y, HEIGHT);
+	if (x_pixel > WIDTH || y_pixel - 1 >= HEIGHT)
 		return ;
-	printf("Calling mlx_put_pixel with intx: %d, inty: %d\n", intx, HEIGHT - inty);
-	mlx_put_pixel(image, intx, HEIGHT - inty, ft_pixel(255, 0, 0, 255));
+	printf("Calling mlx_put_pixel with x_pixel: %d, y_pixel: %d\n", x_pixel, HEIGHT - y_pixel);
+	mlx_put_pixel(image, x_pixel, HEIGHT - y_pixel, ft_pixel(255, 0, 0, 255));
 }
 
 void tick(void *arg)
