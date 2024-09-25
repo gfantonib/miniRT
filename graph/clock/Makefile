@@ -13,7 +13,7 @@ LIBNAME = libft.a
 LIBPATH = ../../libft
 
 NAME = miniRT
-SRCFILES = tuple.c color.c matrix.c error_exit.c epsilon.c
+SRCFILES = tuple.c color.c matrix.c error_exit.c epsilon.c transformation.c
 SRCMAIN = main.c
 MAINOBJ = $(OBJPATH)/$(SRCMAIN:.c=.o)
 OBJ = $(SRCFILES:%.c=$(OBJPATH)/%.o)

@@ -6,12 +6,14 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/25 11:41:05 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:55:39 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42/MLX42.h"
+#include "matrix.h"
 #include <stdio.h>
+#include <math.h>
 #define WIDTH 900
 #define HEIGHT 550
 
@@ -25,30 +27,36 @@ int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-void safe_put_pixel(unsigned int x, unsigned int y, mlx_image_t *image)
+void safe_put_pixel(float x, float y, mlx_image_t *image)
 {
-	if (x >= WIDTH || y - 1 >= HEIGHT)
+	int intx;
+	int inty;
+	
+	x = (x + 1.0) / (2.0 / (float)WIDTH); 
+	y = (y + 1.0) / (2.0 / (float)HEIGHT);
+	intx = round(x);
+	inty = round(y);
+	if (intx >= WIDTH || inty - 1 >= HEIGHT)
 		return ;
-	printf("Calling mlx_put_pixel with x: %d, y: %d\n", x, HEIGHT - y);
-	mlx_put_pixel(image, x, HEIGHT - y, ft_pixel(255, 0, 0, 255));
+	printf("Calling mlx_put_pixel with intx: %d, inty: %d\n", intx, HEIGHT - inty);
+	mlx_put_pixel(image, intx, HEIGHT - inty, ft_pixel(255, 0, 0, 255));
 }
 
 void tick(void *arg)
 {
-	int x;
-	int y;
+	int i;
+	t_matrix *point;
+	t_matrix *transform;
+
 	t_world *world = (t_world *)arg;
-	
-	x = 0;
-	while (x < WIDTH)
-	{	
-		y = 0;
-		while (y < HEIGHT)
-		{
-			safe_put_pixel(x, y, world->image);
-			y++;
-		}
-		x++;
+	point = create_point(0, 1, 0);
+	i = 0;
+	while (i < 12)
+	{
+		safe_put_pixel(point->matrix[0][0], point->matrix[1][0], world->image);
+		transform = rotate_z(PI / 4);
+		point = matrix_matrix_mult(*transform, *point);
+		i++;
 	}
 }
 
