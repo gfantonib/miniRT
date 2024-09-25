@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:31:59 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/23 18:27:45 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/25 09:17:04 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,8 @@ t_matrix *scaling(float x, float y, float z);
 t_matrix *rotate_x(float radians);
 t_matrix *rotate_y(float radians);
 t_matrix *rotate_z(float radians);
+
+// transformation2.c
+t_matrix *shear(float *shear_array);
 
 #endif
