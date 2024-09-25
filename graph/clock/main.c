@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/25 19:05:25 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/25 19:35:22 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include "matrix.h"
 #include <stdio.h>
 #include <math.h>
-#define WIDTH 900
-#define HEIGHT 550
+#define WIDTH 1800
+#define HEIGHT 900
 
 typedef struct s_world
 {
@@ -39,7 +39,7 @@ void safe_put_pixel(float x, float y, mlx_image_t *image)
 	
 	x_pixel = dominus_trans(x, WIDTH);
 	y_pixel = dominus_trans(y, HEIGHT);
-	if (x_pixel > WIDTH || y_pixel - 1 >= HEIGHT)
+	if (x_pixel > WIDTH || y_pixel > HEIGHT)
 		return ;
 	printf("Calling mlx_put_pixel with x_pixel: %d, y_pixel: %d\n", x_pixel, HEIGHT - y_pixel);
 	mlx_put_pixel(image, x_pixel, HEIGHT - y_pixel, ft_pixel(255, 0, 0, 255));
@@ -52,12 +52,12 @@ void tick(void *arg)
 	t_matrix *transform;
 
 	t_world *world = (t_world *)arg;
-	point = create_point(0, 1, 0);
+	point = create_point(0, -1, 0);
 	i = 0;
-	while (i < 12)
+	while (i < 2000)
 	{
 		safe_put_pixel(point->matrix[0][0], point->matrix[1][0], world->image);
-		transform = rotate_z(PI / 4);
+		transform = rotate_z(PI / 1000);
 		point = matrix_matrix_mult(*transform, *point);
 		i++;
 	}
@@ -68,9 +68,9 @@ int main(void)
 	mlx_t *mlx;
 	t_world world;
 
-	mlx = mlx_init(WIDTH, HEIGHT, "miniRT", true);
+	mlx = mlx_init(WIDTH + 10, HEIGHT + 10, "miniRT", true);
 	world.image = mlx_new_image(mlx, WIDTH, HEIGHT);
-	mlx_image_to_window(mlx, world.image, 0, 0);
+	mlx_image_to_window(mlx, world.image, 5, 5);
 	
 	mlx_loop_hook(mlx, tick, &world);
 	mlx_loop(mlx);
