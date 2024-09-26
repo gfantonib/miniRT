@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/25 19:35:22 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/26 12:33:18 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include "matrix.h"
 #include <stdio.h>
 #include <math.h>
-#define WIDTH 1800
-#define HEIGHT 900
+#define WIDTH 1200
+#define HEIGHT 600
 
 typedef struct s_world
 {
@@ -29,7 +29,7 @@ int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 
 unsigned int dominus_trans(float value, unsigned int size)
 {
-	return ((unsigned int)round((value + 1.0) / (2.0 / (float)size)));
+	return ((unsigned int)((value + 1.0) / (2.0 / (float)size)));
 }
 
 void safe_put_pixel(float x, float y, mlx_image_t *image)
