@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 11:22:15 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/27 13:19:28 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/27 17:32:18 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_sphere *create_sphere(t_matrix center)
 		error_exit("create_sphere() error: both arguments must be vertical vectors\n");
 	sphere = (t_sphere *)calloc(1, sizeof(t_sphere));
 	ft_collect_mem(sphere);
+	sphere->type = SPHERE;
 	sphere->center = create_point(center.matrix[0][0], center.matrix[1][0], center.matrix[2][0]);
 	return (sphere);
 }

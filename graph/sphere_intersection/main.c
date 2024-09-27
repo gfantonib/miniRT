@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/27 15:38:43 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/27 17:48:19 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "matrix.h"
 #include "ray.h"
 #include "sphere.h"
+#include "intersect.h"
 
 #define WIDTH 1200
 #define HEIGHT 600
@@ -98,7 +99,13 @@ int main(void)
 		printf("i1: %f\ni2: %f\n", intersect[0], intersect[1]);
 	else
 		printf("No intersection!\n");
+	printf("\n");
+	t_intersect inter;
+	inter.interpoint = 0.0;
+	inter.object = sphere;
+	printf("type: %d\n", ((t_sphere *)inter.object)->type);
 	ft_free_trashman();
+	
 	return (0);
 }
 
