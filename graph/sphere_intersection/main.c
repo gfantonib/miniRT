@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/27 11:05:03 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/27 13:14:12 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,10 @@
 
 #include "matrix.h"
 #include "ray.h"
+#include "sphere.h"
 
 #define WIDTH 1200
 #define HEIGHT 600
-
-void print_matrix(t_matrix matrix)
-{
-	unsigned int i;
-	unsigned int j;
-
-	i = 0;
-	j = 0;
-	while(i < matrix.rows)
-	{
-		j = 0;
-		while(j < matrix.columns)
-		{
-			printf("%f ", matrix.matrix[i][j] );
-			j++;
-		}
-		printf("\n");
-		i++;
-	}	
-}
 
 typedef struct s_world
 {
@@ -108,6 +89,12 @@ int main(void)
 	print_matrix(*position(*ray, -1));
 	printf("\n");
 	print_matrix(*position(*ray, 2.5));
+	printf("\n");
+	
+	ray = create_ray(*create_point(0, 0, -5), *create_vector(0, 0, 1));
+	t_sphere *sphere = create_sphere(*create_point(0, 0, 0));
+	float *intersect = sphere_intersect(*sphere, *ray);
+	printf("i1: %f\ni2: %f\n", intersect[0], intersect[1]);
 	ft_free_trashman();
 	return (0);
 }
