@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 11:42:23 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/23 11:10:02 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/27 13:14:23 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,24 @@ void	normalize(t_matrix *matrix)
 		}
 		i++;
 	}
+}
+
+void print_matrix(t_matrix matrix)
+{
+	unsigned int i;
+	unsigned int j;
+
+	i = 0;
+	j = 0;
+	while(i < matrix.rows)
+	{
+		j = 0;
+		while(j < matrix.columns)
+		{
+			printf("%f ", matrix.matrix[i][j] );
+			j++;
+		}
+		printf("\n");
+		i++;
+	}	
 }

@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:31:59 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/25 09:17:04 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/27 13:16:18 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/libft.h"
 # include "math.h"
 # include "stdlib.h"
+# include "stdio.h"
 
 #define PI 3.141592654
 
@@ -53,6 +54,7 @@ float		magnitude(t_matrix matrix);
 
 // matrix4.c
 void		normalize(t_matrix *matrix);
+void		print_matrix(t_matrix matrix);
 
 // tuple.c
 t_matrix	*create_point(float x, float y, float z);
