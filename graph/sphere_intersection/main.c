@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/27 09:28:02 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/27 11:05:03 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,16 +100,15 @@ int main(void)
 	// mlx_loop(mlx);
 	// mlx_terminate(mlx);
 
-	t_ray ray;
-	ray.origin = create_point(2, 3, 4);
-	ray.direction = create_vector(1, 0, 0);
-	print_matrix(*position(ray, 0));
+	t_ray *ray = create_ray(*create_point(2, 3, 4), *create_vector(1, 0, 0));
+	print_matrix(*position(*ray, 0));
 	printf("\n");
-	print_matrix(*position(ray, 1));
+	print_matrix(*position(*ray, 1));
 	printf("\n");
-	print_matrix(*position(ray, -1));
+	print_matrix(*position(*ray, -1));
 	printf("\n");
-	print_matrix(*position(ray, 2.5));
+	print_matrix(*position(*ray, 2.5));
+	ft_free_trashman();
 	return (0);
 }
 

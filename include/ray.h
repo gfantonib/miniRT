@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:31:59 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/27 09:18:14 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/27 10:47:53 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_ray
 	t_matrix	*direction;
 }	t_ray;
 
+t_ray		*create_ray(t_matrix origin, t_matrix direction);
 t_matrix	*position(t_ray ray, float t);
 
 #endif
