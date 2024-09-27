@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/27 13:14:12 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/27 15:38:43 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,13 @@ int main(void)
 	print_matrix(*position(*ray, 2.5));
 	printf("\n");
 	
-	ray = create_ray(*create_point(0, 0, -5), *create_vector(0, 0, 1));
+	ray = create_ray(*create_point(0, 0, 5), *create_vector(0, 0, 1));
 	t_sphere *sphere = create_sphere(*create_point(0, 0, 0));
 	float *intersect = sphere_intersect(*sphere, *ray);
-	printf("i1: %f\ni2: %f\n", intersect[0], intersect[1]);
+	if (intersect)
+		printf("i1: %f\ni2: %f\n", intersect[0], intersect[1]);
+	else
+		printf("No intersection!\n");
 	ft_free_trashman();
 	return (0);
 }
