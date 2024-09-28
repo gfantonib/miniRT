@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 09:51:48 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/28 12:11:50 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/28 12:22:06 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,18 @@ void	inter_lstiter(t_intersect *lst, void (*f)(float))
 		f(lst->t_value);
 		lst = lst->next;
 	}
+}
+
+t_intersect *hit(t_intersect **head)
+{
+	t_intersect *current;
+
+	current = *head;
+	while (current)
+	{
+		if (current->t_value >= 0)
+			return (current);
+		current = current->next;
+	}
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/28 12:11:21 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/28 12:26:42 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,17 @@ int main(void)
 	// 	printf("No intersection!\n");
 
 	t_intersect *intersect_lst = NULL;
-	inter_lstadd_sorted(&intersect_lst, inter_lstnew(SPHERE, sphere, 5));
-	inter_lstadd_sorted(&intersect_lst, inter_lstnew(SPHERE, sphere, 7));
+	inter_lstadd_sorted(&intersect_lst, inter_lstnew(SPHERE, sphere, -1));
+	inter_lstadd_sorted(&intersect_lst, inter_lstnew(SPHERE, sphere, 0));
 	inter_lstadd_sorted(&intersect_lst, inter_lstnew(SPHERE, sphere, -3));
-	inter_lstadd_sorted(&intersect_lst, inter_lstnew(SPHERE, sphere, 2));
+	inter_lstadd_sorted(&intersect_lst, inter_lstnew(SPHERE, sphere, -2));
 	inter_lstiter(intersect_lst, print_intersect);
-	
+	printf("\n");
+	t_intersect *hit_node = hit(&intersect_lst);
+	if (hit_node)
+		printf("%f\n", hit_node->t_value);
+	else
+		printf("No hit!\n");
 	ft_free_trashman();
 	return (0);
 }
