@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/27 17:48:19 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/28 10:33:21 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,11 @@ void tick(void *arg)
 	}
 }
 
+void	print_intersect(float t_value)
+{
+	printf("%f\n", t_value);
+}
+
 int main(void)
 {
 	// mlx_t *mlx;
@@ -94,18 +99,12 @@ int main(void)
 	
 	ray = create_ray(*create_point(0, 0, 5), *create_vector(0, 0, 1));
 	t_sphere *sphere = create_sphere(*create_point(0, 0, 0));
-	float *intersect = sphere_intersect(*sphere, *ray);
+	t_intersect *intersect = sphere_intersect(sphere, *ray);
 	if (intersect)
-		printf("i1: %f\ni2: %f\n", intersect[0], intersect[1]);
+		inter_lstiter(intersect, print_intersect);
 	else
 		printf("No intersection!\n");
-	printf("\n");
-	t_intersect inter;
-	inter.interpoint = 0.0;
-	inter.object = sphere;
-	printf("type: %d\n", ((t_sphere *)inter.object)->type);
 	ft_free_trashman();
-	
 	return (0);
 }
 

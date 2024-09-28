@@ -6,12 +6,13 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 11:22:15 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/27 17:32:18 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/28 10:42:41 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sphere.h"
 #include "ray.h"
+#include "intersect.h"
 #include "error_exit.h"
 
 t_sphere *create_sphere(t_matrix center)
@@ -27,24 +28,24 @@ t_sphere *create_sphere(t_matrix center)
 	return (sphere);
 }
 
-float	*sphere_intersect(t_sphere sphere, t_ray ray)
+t_intersect *sphere_intersect(t_sphere *sphere, t_ray ray)
 {
 	float a;
 	float b;
 	float c;
-	t_matrix sphere_to_ray;
 	float disc;
-	float *intersect;
+	t_intersect *intersect;
+	t_matrix sphere_to_ray;
 	
-	sphere_to_ray = *matrix_minus(*ray.origin, *sphere.center);
+	intersect = NULL;
+	sphere_to_ray = *matrix_minus(*ray.origin, *sphere->center);
 	a = dot_prod(*ray.direction, *ray.direction);
 	b = dot_prod(*ray.direction, sphere_to_ray) * 2;
 	c = dot_prod(sphere_to_ray, sphere_to_ray) - 1;
 	disc = powf(b, 2) - 4 * a * c;
 	if (disc < 0)
 		return (NULL);
-	intersect = (float *)calloc(2, sizeof(float));
-	intersect[0] = (-b - sqrtf(disc)) / (2 * a);
-	intersect[1] = (-b + sqrtf(disc)) / (2 * a);
+	inter_lstadd_back(&intersect, inter_lstnew(SPHERE, sphere, (-b - sqrtf(disc)) / (2 * a)));
+	inter_lstadd_back(&intersect, inter_lstnew(SPHERE, sphere, (-b + sqrtf(disc)) / (2 * a)));
 	return (intersect);
 }
