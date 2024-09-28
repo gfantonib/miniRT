@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 09:51:48 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/28 10:28:02 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/28 12:11:50 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,23 @@ t_intersect	*inter_lstnew(int type, void *object, float t_value)
 	return (new_node);
 }
 
-void	inter_lstadd_back(t_intersect **lst, t_intersect *new)
+void inter_lstadd_sorted(t_intersect **lst, t_intersect *new)
 {
-	t_intersect	*last_node;
-
-	if (*lst == NULL)
+	if (*lst == NULL || new->t_value < (*lst)->t_value)
 	{
+		new->next = *lst;
 		*lst = new;
-		return ;
 	}
-	last_node = inter_lstlast(*lst);
-	last_node->next = new;
+	else
+	{
+		t_intersect *current = *lst;
+		while (current->next != NULL && current->next->t_value < new->t_value)
+		{
+			current = current->next;
+		}
+		new->next = current->next;
+		current->next = new;
+	}
 }
 
 t_intersect	*inter_lstlast(t_intersect *lst)

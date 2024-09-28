@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 11:22:15 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/28 10:42:41 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/28 12:03:26 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_intersect *sphere_intersect(t_sphere *sphere, t_ray ray)
 	disc = powf(b, 2) - 4 * a * c;
 	if (disc < 0)
 		return (NULL);
-	inter_lstadd_back(&intersect, inter_lstnew(SPHERE, sphere, (-b - sqrtf(disc)) / (2 * a)));
-	inter_lstadd_back(&intersect, inter_lstnew(SPHERE, sphere, (-b + sqrtf(disc)) / (2 * a)));
+	inter_lstadd_sorted(&intersect, inter_lstnew(SPHERE, sphere, (-b - sqrtf(disc)) / (2 * a)));
+	inter_lstadd_sorted(&intersect, inter_lstnew(SPHERE, sphere, (-b + sqrtf(disc)) / (2 * a)));
 	return (intersect);
 }

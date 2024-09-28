@@ -6,7 +6,7 @@
 /*   By: gfantoni <gfantoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 13:31:01 by gfantoni          #+#    #+#             */
-/*   Updated: 2024/09/28 10:33:21 by gfantoni         ###   ########.fr       */
+/*   Updated: 2024/09/28 12:11:21 by gfantoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,23 +87,31 @@ int main(void)
 	// mlx_loop(mlx);
 	// mlx_terminate(mlx);
 
-	t_ray *ray = create_ray(*create_point(2, 3, 4), *create_vector(1, 0, 0));
-	print_matrix(*position(*ray, 0));
-	printf("\n");
-	print_matrix(*position(*ray, 1));
-	printf("\n");
-	print_matrix(*position(*ray, -1));
-	printf("\n");
-	print_matrix(*position(*ray, 2.5));
-	printf("\n");
+	// t_ray *ray = create_ray(*create_point(2, 3, 4), *create_vector(1, 0, 0));
+	// print_matrix(*position(*ray, 0));
+	// printf("\n");
+	// print_matrix(*position(*ray, 1));
+	// printf("\n");
+	// print_matrix(*position(*ray, -1));
+	// printf("\n");
+	// print_matrix(*position(*ray, 2.5));
+	// printf("\n");
 	
-	ray = create_ray(*create_point(0, 0, 5), *create_vector(0, 0, 1));
+	// ray = create_ray(*create_point(0, 0, -5), *create_vector(0, 0, 1));
 	t_sphere *sphere = create_sphere(*create_point(0, 0, 0));
-	t_intersect *intersect = sphere_intersect(sphere, *ray);
-	if (intersect)
-		inter_lstiter(intersect, print_intersect);
-	else
-		printf("No intersection!\n");
+	// t_intersect *intersect = sphere_intersect(sphere, *ray);
+	// if (intersect)
+	// 	inter_lstiter(intersect, print_intersect);
+	// else
+	// 	printf("No intersection!\n");
+
+	t_intersect *intersect_lst = NULL;
+	inter_lstadd_sorted(&intersect_lst, inter_lstnew(SPHERE, sphere, 5));
+	inter_lstadd_sorted(&intersect_lst, inter_lstnew(SPHERE, sphere, 7));
+	inter_lstadd_sorted(&intersect_lst, inter_lstnew(SPHERE, sphere, -3));
+	inter_lstadd_sorted(&intersect_lst, inter_lstnew(SPHERE, sphere, 2));
+	inter_lstiter(intersect_lst, print_intersect);
+	
 	ft_free_trashman();
 	return (0);
 }
